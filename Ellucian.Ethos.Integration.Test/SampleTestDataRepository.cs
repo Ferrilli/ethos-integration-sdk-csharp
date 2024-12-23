@@ -32,59 +32,99 @@ namespace Ellucian.Ethos.Integration.Test
 
         public static string GetOneJsonRecordString()
         {
-            return @"{
-                'dateTime':'2020-09-01T12:00:00Z','severity':'Error','applicationName':'Colleague','responseCode':500,'description':'Internal Server Error',
-                'details':'This is a more info on the info error','id':'b1a3fc8f-d0cd-4a8b-a6c6-af252f4e49f7','applicationId':'67b462f2-c554-4c15-91fa-e1194a85553b',
-                'correlationId':'2468UserMade3242134','applicationSubtype':'EMA','resource':{'id':'b1a3fc8f-d0cd-4a8b-a6c6-af252f4e49f7','name':'persons'},
-                'request':{'URI':'www.papa-johns.com','payload':'Order me a pizza','headers':['contentType','secondHeader','third header']}}";
+            return
+"""
+{
+    'dateTime':'2020-09-01T12:00:00Z',
+    'severity':'Error',
+    'applicationName':'Colleague',
+    'responseCode':500,
+    'description':'Internal Server Error',
+    'details':'This is a more info on the info error',
+    'id':'b1a3fc8f-d0cd-4a8b-a6c6-af252f4e49f7',
+    'applicationId':'67b462f2-c554-4c15-91fa-e1194a85553b',
+    'correlationId':'2468UserMade3242134',
+    'applicationSubtype':'EMA',
+    'resource':{'id':'b1a3fc8f-d0cd-4a8b-a6c6-af252f4e49f7','name':'persons'},
+    'request':{'URI':'www.papa-johns.com','payload':'Order me a pizza','headers':['contentType','secondHeader','third header']}
+}
+""";
         }
 
         public static string GetArrayJsonRecordString()
         {
-            return @"[{'code':'ATHL','title':'Athletes','description':'Athletes','id':'f43aa813-efaf-427c-afc6-d8daf352fb3b'},{'code':'FRAT','title':'Fraternity','description':'Fraternity',
-                       'id':'d6dcbad9-dd1c-41ee-93cb-26749449070e'},{'code':'SORO','title':'Sorority','description':'Sorority','id':'362e8bb3-c822-4ce8-843b-0f3f66499c0c'},{'code':'ROTC','title':'ROTC Participants',
-                       'description':'ROTC Participants','id':'d43fd919-8a05-4483-8d39-fd794d578beb'},{'code':'VETS','title':'Military Veterans','description':'Military Veterans','id':'1a19225a-508e-4bdc-84b8-92485c74cfe3'},
-                      {'code':'APPR','title':'Apprentices','description':'Apprentices','id':'4ccb1f44-758c-4733-ac90-f3204a0d5230'},{'code':'FTBL','title':'IPEDS-Football','description':'IPEDS-Football',
-                       'id':'3d58b4be-fd87-45c3-a864-3fc7e0969c86'},{'code':'BSKT','title':'IPEDS-Basketball','description':'IPEDS-Basketball','id':'b66e3138-6e85-4c4b-b1d6-70becb615473'},{'code':'BSBL','title':'IPEDS-Baseball',
-                       'description':'IPEDS-Baseball','id':'d80c51cf-d83f-42bf-8caa-0eb3d3bf1332'},{'code':'TRCK','title':'IPEDS-Track/CrossCountry','description':'IPEDS-Track/CrossCountry',
-                       'id':'839fb6c0-f476-4182-a2d3-e3e621a8d8f4'}]";
+            return
+"""
+[
+    {'code':'ATHL','title':'Athletes','description':'Athletes','id':'f43aa813-efaf-427c-afc6-d8daf352fb3b'},
+    {'code':'FRAT','title':'Fraternity','description':'Fraternity','id':'d6dcbad9-dd1c-41ee-93cb-26749449070e'},
+    {'code':'SORO','title':'Sorority','description':'Sorority','id':'362e8bb3-c822-4ce8-843b-0f3f66499c0c'},
+    {'code':'ROTC','title':'ROTC Participants','description':'ROTC Participants','id':'d43fd919-8a05-4483-8d39-fd794d578beb'},
+    {'code':'VETS','title':'Military Veterans','description':'Military Veterans','id':'1a19225a-508e-4bdc-84b8-92485c74cfe3'},
+    {'code':'APPR','title':'Apprentices','description':'Apprentices','id':'4ccb1f44-758c-4733-ac90-f3204a0d5230'},
+    {'code':'FTBL','title':'IPEDS-Football','description':'IPEDS-Football','id':'3d58b4be-fd87-45c3-a864-3fc7e0969c86'},
+    {'code':'BSKT','title':'IPEDS-Basketball','description':'IPEDS-Basketball','id':'b66e3138-6e85-4c4b-b1d6-70becb615473'},
+    {'code':'BSBL','title':'IPEDS-Baseball','description':'IPEDS-Baseball','id':'d80c51cf-d83f-42bf-8caa-0eb3d3bf1332'},
+    {'code':'TRCK','title':'IPEDS-Track/CrossCountry','description':'IPEDS-Track/CrossCountry','id':'839fb6c0-f476-4182-a2d3-e3e621a8d8f4'}
+]
+""";
         }
 
         public static JArray GetArrayJsonRecordJArray()
         {
-            var json = @"[{'code':'ATHL','title':'Athletes','description':'Athletes','id':'f43aa813-efaf-427c-afc6-d8daf352fb3b'},{'code':'FRAT','title':'Fraternity','description':'Fraternity',
-                       'id':'d6dcbad9-dd1c-41ee-93cb-26749449070e'},{'code':'SORO','title':'Sorority','description':'Sorority','id':'362e8bb3-c822-4ce8-843b-0f3f66499c0c'},{'code':'ROTC','title':'ROTC Participants',
-                       'description':'ROTC Participants','id':'d43fd919-8a05-4483-8d39-fd794d578beb'},{'code':'VETS','title':'Military Veterans','description':'Military Veterans','id':'1a19225a-508e-4bdc-84b8-92485c74cfe3'},
-                      {'code':'APPR','title':'Apprentices','description':'Apprentices','id':'4ccb1f44-758c-4733-ac90-f3204a0d5230'},{'code':'FTBL','title':'IPEDS-Football','description':'IPEDS-Football',
-                       'id':'3d58b4be-fd87-45c3-a864-3fc7e0969c86'},{'code':'BSKT','title':'IPEDS-Basketball','description':'IPEDS-Basketball','id':'b66e3138-6e85-4c4b-b1d6-70becb615473'},{'code':'BSBL','title':'IPEDS-Baseball',
-                       'description':'IPEDS-Baseball','id':'d80c51cf-d83f-42bf-8caa-0eb3d3bf1332'},{'code':'TRCK','title':'IPEDS-Track/CrossCountry','description':'IPEDS-Track/CrossCountry',
-                       'id':'839fb6c0-f476-4182-a2d3-e3e621a8d8f4'}]";
+            var json =
+"""
+[
+    {'code':'ATHL','title':'Athletes','description':'Athletes','id':'f43aa813-efaf-427c-afc6-d8daf352fb3b'},
+    {'code':'FRAT','title':'Fraternity','description':'Fraternity','id':'d6dcbad9-dd1c-41ee-93cb-26749449070e'},
+    {'code':'SORO','title':'Sorority','description':'Sorority','id':'362e8bb3-c822-4ce8-843b-0f3f66499c0c'},
+    {'code':'ROTC','title':'ROTC Participants','description':'ROTC Participants','id':'d43fd919-8a05-4483-8d39-fd794d578beb'},
+    {'code':'VETS','title':'Military Veterans','description':'Military Veterans','id':'1a19225a-508e-4bdc-84b8-92485c74cfe3'},
+    {'code':'APPR','title':'Apprentices','description':'Apprentices','id':'4ccb1f44-758c-4733-ac90-f3204a0d5230'},
+    {'code':'FTBL','title':'IPEDS-Football','description':'IPEDS-Football','id':'3d58b4be-fd87-45c3-a864-3fc7e0969c86'},
+    {'code':'BSKT','title':'IPEDS-Basketball','description':'IPEDS-Basketball','id':'b66e3138-6e85-4c4b-b1d6-70becb615473'},
+    {'code':'BSBL','title':'IPEDS-Baseball','description':'IPEDS-Baseball','id':'d80c51cf-d83f-42bf-8caa-0eb3d3bf1332'},
+    {'code':'TRCK','title':'IPEDS-Track/CrossCountry','description':'IPEDS-Track/CrossCountry','id':'839fb6c0-f476-4182-a2d3-e3e621a8d8f4'}
+]
+""";
             return JsonConvert.DeserializeObject<JArray>( json );
         }
         public static string GetArrayJsonRecordQAPI()
         {
-            return @"[{'code':'ATHL','title':'Athletes','description':'Athletes','id':'f43aa813-efaf-427c-afc6-d8daf352fb3b'},{'code':'FRAT','title':'Fraternity','description':'Fraternity',
-                       'id':'d6dcbad9-dd1c-41ee-93cb-26749449070e'},{'code':'SORO','title':'Sorority','description':'Sorority','id':'362e8bb3-c822-4ce8-843b-0f3f66499c0c'},{'code':'ROTC','title':'ROTC Participants',
-                       'description':'ROTC Participants','id':'d43fd919-8a05-4483-8d39-fd794d578beb'},{'code':'VETS','title':'Military Veterans','description':'Military Veterans','id':'1a19225a-508e-4bdc-84b8-92485c74cfe3'},
-                      {'code':'APPR','title':'Apprentices','description':'Apprentices','id':'4ccb1f44-758c-4733-ac90-f3204a0d5230'},{'code':'FTBL','title':'IPEDS-Football','description':'IPEDS-Football',
-                       'id':'3d58b4be-fd87-45c3-a864-3fc7e0969c86'},{'code':'BSKT','title':'IPEDS-Basketball','description':'IPEDS-Basketball','id':'b66e3138-6e85-4c4b-b1d6-70becb615473'},{'code':'BSBL','title':'IPEDS-Baseball',
-                       'description':'IPEDS-Baseball','id':'d80c51cf-d83f-42bf-8caa-0eb3d3bf1332'},{'code':'TRCK','title':'IPEDS-Track/CrossCountry','description':'IPEDS-Track/CrossCountry',
-                       'id':'839fb6c0-f476-4182-a2d3-e3e621a8d8f4'}]";
+            return
+"""
+[
+    {'code':'ATHL','title':'Athletes','description':'Athletes','id':'f43aa813-efaf-427c-afc6-d8daf352fb3b'},
+    {'code':'FRAT','title':'Fraternity','description':'Fraternity','id':'d6dcbad9-dd1c-41ee-93cb-26749449070e'},
+    {'code':'SORO','title':'Sorority','description':'Sorority','id':'362e8bb3-c822-4ce8-843b-0f3f66499c0c'},
+    {'code':'ROTC','title':'ROTC Participants','description':'ROTC Participants','id':'d43fd919-8a05-4483-8d39-fd794d578beb'},
+    {'code':'VETS','title':'Military Veterans','description':'Military Veterans','id':'1a19225a-508e-4bdc-84b8-92485c74cfe3'},
+    {'code':'APPR','title':'Apprentices','description':'Apprentices','id':'4ccb1f44-758c-4733-ac90-f3204a0d5230'},
+    {'code':'FTBL','title':'IPEDS-Football','description':'IPEDS-Football','id':'3d58b4be-fd87-45c3-a864-3fc7e0969c86'},
+    {'code':'BSKT','title':'IPEDS-Basketball','description':'IPEDS-Basketball','id':'b66e3138-6e85-4c4b-b1d6-70becb615473'},
+    {'code':'BSBL','title':'IPEDS-Baseball','description':'IPEDS-Baseball','id':'d80c51cf-d83f-42bf-8caa-0eb3d3bf1332'},
+    {'code':'TRCK','title':'IPEDS-Track/CrossCountry','description':'IPEDS-Track/CrossCountry','id':'839fb6c0-f476-4182-a2d3-e3e621a8d8f4'}
+]
+""";
         }
 
         public static string GetErrorMessage()
         {
-            return @"[{'id':'b29c5c1c-d9d8-4ce8-bb18-89748e13776f','dateTime':'2020-10-16T12:14:45.319Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) 
-                        which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},{'id':'04c75eee-9661-4182-b740-ded5bf49b522','dateTime':'2020-10-16T12:14:30.336Z',
-                        'severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc',
-                        'resource':{'name':'section-registrations (v7)'}},{'id':'77286385-4395-4e49-8ae5-4f447a99a367','dateTime':'2020-10-16T12:14:15.919Z','severity':'info','responseCode':200,
-                        'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
-                        {'id':'b70064d0-f08a-4b8f-afaa-1bc40628c74c','dateTime':'2020-10-16T12:14:00.314Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ',
-                        'applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
-                        {'id':'abfc46f2-3ab5-4d19-a3ef-68b2b902ad4b','dateTime':'2020-10-16T12:13:45.257Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ',
-                        'applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},{'id':'a42534d2-79e6-44cd-ac33-72a604fd7371','dateTime':'2020-10-16T12:13:30.350Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc',
-                        'resource':{'name':'section-registrations (v7)'}},{'id':'6a587f86-e1e6-41e0-8514-60d8e07ddcd5','dateTime':'2020-10-16T12:13:16.471Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
-                        {'id':'cc93f403-d7dc-421f-8fd8-55529d9f6138','dateTime':'2020-10-16T12:13:00.910Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},{'id':'68c7fd69-6e23-4bac-8d34-d337247eb392','dateTime':'2020-10-16T12:12:45.403Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},{'id':'6c16947c-cdac-4cad-b10c-a06f3250e35d','dateTime':'2020-10-16T12:12:30.908Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}}]";
+            return
+"""
+[
+    {'id':'b29c5c1c-d9d8-4ce8-bb18-89748e13776f','dateTime':'2020-10-16T12:14:45.319Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'04c75eee-9661-4182-b740-ded5bf49b522','dateTime':'2020-10-16T12:14:30.336Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'77286385-4395-4e49-8ae5-4f447a99a367','dateTime':'2020-10-16T12:14:15.919Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'b70064d0-f08a-4b8f-afaa-1bc40628c74c','dateTime':'2020-10-16T12:14:00.314Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'abfc46f2-3ab5-4d19-a3ef-68b2b902ad4b','dateTime':'2020-10-16T12:13:45.257Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'a42534d2-79e6-44cd-ac33-72a604fd7371','dateTime':'2020-10-16T12:13:30.350Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'6a587f86-e1e6-41e0-8514-60d8e07ddcd5','dateTime':'2020-10-16T12:13:16.471Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'cc93f403-d7dc-421f-8fd8-55529d9f6138','dateTime':'2020-10-16T12:13:00.910Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'68c7fd69-6e23-4bac-8d34-d337247eb392','dateTime':'2020-10-16T12:12:45.403Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}},
+    {'id':'6c16947c-cdac-4cad-b10c-a06f3250e35d','dateTime':'2020-10-16T12:12:30.908Z','severity':'info','responseCode':200,'description':'This application is sending requests for section-registrations (v7) which is a deprecated version ','applicationId':'9e8aaa0b-db17-4b83-986f-540b367207bc','resource':{'name':'section-registrations (v7)'}}
+]
+""";
         }
 
         public static string GetToken()
@@ -94,93 +134,434 @@ namespace Ellucian.Ethos.Integration.Test
 
         public static string GetAvailableResourcesData()
         {
-            return @"[{'id':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6','name':'Auth App 1','resources':[{'name':'address-types','representations':[{'X-Media-Type':'application/vnd.hedtech.integration.v6+json',
-                    'methods':['get'],'version':'v6'},{'X-Media-Type':'application/vnd.hedtech.integration.v6.1.0+json','methods':['get'],'version':'v6.1.0'},{'X-Media-Type':'application/json',
-                    'methods':['get']}]},{'name':'buildings','representations':[{'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get'],'version':'v6'},
-                    {'X-Media-Type':'application/json','methods':['get']}]}]},{'id':'2f977334-edfd-4408-a227-21663664abc9','name':'Auth App 2','resources':[{'name':'buildings',
-                    'representations':[{'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get'],'version':'v6'},{'X-Media-Type':'application/json','methods':['get']}]},
-                    {'name':'course-levels','representations':[{'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get'],'version':'v6'},{'X-Media-Type':'application/json',
-                    'methods':['get']}]}]}]";
+            return
+"""
+[
+    {
+        'id':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6',
+        'name':'Auth App 1',
+        'resources':
+        [
+            {
+                'name':'address-types',
+                'representations':
+                [
+                        {'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get'],'version':'v6'},
+                        {'X-Media-Type':'application/vnd.hedtech.integration.v6.1.0+json','methods':['get'],'version':'v6.1.0'},
+                        {'X-Media-Type':'application/json','methods':['get']}
+                ]
+            },
+            {
+                'name':'buildings',
+                'representations':
+                [
+                    {'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get'],'version':'v6'},
+                    {'X-Media-Type':'application/json','methods':['get']}
+                ]
+            }
+        ]
+    },
+    {
+        'id':'2f977334-edfd-4408-a227-21663664abc9',
+        'name':'Auth App 2',
+        'resources':
+        [
+            {
+                'name':'buildings',
+                'representations':
+                [
+                    {'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get'],'version':'v6'},
+                    {'X-Media-Type':'application/json','methods':['get']}
+                ]
+            },
+            {
+                'name':'course-levels',
+                'representations':
+                [
+                    {'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get'],'version':'v6'},
+                    {'X-Media-Type':'application/json','methods':['get']}
+                ]
+            }
+        ]
+    }
+]
+""";
         }
 
         public static string GetResourceForPersons()
         {
-            return @"[{'id':'b7bc3d67-5d69-4191-9744-36eb1eb4ba72','name':'Banner Integration API','about':[{'applicationName':'IntegrationApi','applicationVersion':'9.22','buildNumber':'7','name':'IntegrationApi','version':'9.22'}],'resources':[{'name':'persons','representations':[{'filters':['title','firstName','middleName','lastNamePrefix','lastName','pedigree','role','credentialType','credentialValue','personFilter'],'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get','post','put'],'version':'v6'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credential.type','credential.value','personFilter'],'X-Media-Type':'application/vnd.hedtech.integration.v8+json','methods':['get','post','put'],'version':'v8'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],'version':'v12'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.0.0+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],'version':'v12.0.0'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.1.0+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],'version':'v12.1.0'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.2.0+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],'version':'v12.2.0'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.3.0+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],'version':'v12.3.0'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}]},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1.0.0+json','methods':['get','post'],'version':'v1.0.0'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','methods':['get','post'],'version':'v1'}]}]}]";
+            return
+"""
+[
+    {
+        'id':'b7bc3d67-5d69-4191-9744-36eb1eb4ba72',
+        'name':'Banner Integration API',
+        'about':
+        [
+            {
+                'applicationName':'IntegrationApi',
+                'applicationVersion':'9.22',
+                'buildNumber':'7',
+                'name':'IntegrationApi',
+                'version':'9.22'
+            }
+        ],
+        'resources':
+        [
+            {
+                'name':'persons',
+                'representations':
+                [
+                    {
+                        'filters':['title','firstName','middleName','lastNamePrefix','lastName','pedigree','role','credentialType','credentialValue','personFilter'],
+                        'X-Media-Type':'application/vnd.hedtech.integration.v6+json',
+                        'methods':['get','post','put'],
+                        'version':'v6'},
+                    {
+                        'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credential.type','credential.value','personFilter'],
+                        'X-Media-Type':'application/vnd.hedtech.integration.v8+json',
+                        'methods':['get','post','put'],
+                        'version':'v8'
+                    },
+                    {
+                        'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                        'getAllPatterns':
+                        [
+                            {
+                                'X-Media-Type':'application/vnd.hedtech.integration.v12+json',
+                                'method':'get',
+                                'name':'paging'
+                            },
+                            {
+                                'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json',
+                                'method':'post',
+                                'name':'batch'
+                            }
+                        ],
+                        'X-Media-Type':'application/vnd.hedtech.integration.v12+json',
+                        'methods':['get','post','put'],
+                        'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                        'version':'v12'
+                    },
+                    {
+                        'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                        'getAllPatterns':
+                        [
+                            {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                            {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                        ],
+                        'X-Media-Type':'application/vnd.hedtech.integration.v12.0.0+json',
+                        'methods':['get','post','put'],
+                        'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                        'version':'v12.0.0'
+                    },
+                    {
+                        'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                        'getAllPatterns':
+                        [
+                            {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                            {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                        ],
+                        'X-Media-Type':'application/vnd.hedtech.integration.v12.1.0+json',
+                        'methods':['get','post','put'],
+                        'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                        'version':'v12.1.0'
+                    },
+                    {
+                        'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                        'getAllPatterns':
+                        [
+                            {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                            {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                        ],
+                        'X-Media-Type':'application/vnd.hedtech.integration.v12.2.0+json',
+                        'methods':['get','post','put'],
+                        'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                        'version':'v12.2.0'
+                    },
+                    {
+                        'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                        'getAllPatterns':
+                        [
+                            {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                            {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                        ],
+                        'X-Media-Type':'application/vnd.hedtech.integration.v12.3.0+json',
+                        'methods':['get','post','put'],
+                        'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                        'version':'v12.3.0'
+                    },
+                    {
+                        'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                        'getAllPatterns':
+                        [
+                            {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                            {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                        ],
+                        'X-Media-Type':'application/json',
+                        'methods':['get','post','put'],
+                        'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}]
+                    },
+                    {
+                        'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1.0.0+json',
+                        'methods':['get','post'],
+                        'version':'v1.0.0'
+                    },
+                    {
+                        'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json',
+                        'methods':['get','post'],
+                        'version':'v1'
+                    }
+                ]
+            }
+        ]
+    }
+]
+""";
         }
 
         public static string GetAvailableResourcesWithFiltersAndNamedQueriesData()
         {
-            return @"[{'appId':'b7bc3d67-5d69-4191-9744-36eb1eb4ba72','appName':'BannerIntegrationAPI','resource':{'name':'persons','representations':[{'filters':['title','firstName','middleName','lastNamePrefix',
-                    'lastName','pedigree','role','credentialType','credentialValue','personFilter'],'X-Media-Type':'application/vnd.hedtech.integration.v6+json','methods':['get','post','put'],'version':'v6'},
-                    {'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credential.type','credential.value','personFilter'],
-                    'X-Media-Type':'application/vnd.hedtech.integration.v8+json','methods':['get','post','put'],'version':'v8'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix',
-                    'names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
-                    'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json',
-                    'method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
-                    'version':'v12'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value',
-                    'alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
-                    {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.0.0+json',
-                    'methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],'version':'v12.0.0'},{'filters':['names.title','names.firstName','names.middleName',
-                    'names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
-                    'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json',
-                    'method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.1.0+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
-                    'version':'v12.1.0'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value',
-                    'alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
-                    {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.2.0+json',
-                    'methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],'version':'v12.2.0'},{'filters':['names.title','names.firstName','names.middleName',
-                    'names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
-                    'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json',
-                    'method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.3.0+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
-                    'version':'v12.3.0'},{'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value',
-                    'alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
-                    {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}],'X-Media-Type':'application/json','methods':['get','post','put'],
-                    'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}]},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1.0.0+json','methods':['get','post'],'version':'v1.0.0'},
-                    {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','methods':['get','post'],'version':'v1'}]}}]";
+            return
+"""
+[
+    {
+        'appId':'b7bc3d67-5d69-4191-9744-36eb1eb4ba72',
+        'appName':'BannerIntegrationAPI',
+        'resource':
+        {
+            'name':'persons',
+            'representations':
+            [
+                {
+                    'filters':['title','firstName','middleName','lastNamePrefix','lastName','pedigree','role','credentialType','credentialValue','personFilter'],
+                    'X-Media-Type':'application/vnd.hedtech.integration.v6+json',
+                    'methods':['get','post','put'],
+                    'version':'v6'
+                },
+                {
+                    'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credential.type','credential.value','personFilter'],
+                    'X-Media-Type':'application/vnd.hedtech.integration.v8+json',
+                    'methods':['get','post','put'],
+                    'version':'v8'
+                },
+                {
+                    'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                    'getAllPatterns':
+                    [
+                        {
+                            'X-Media-Type':'application/vnd.hedtech.integration.v12+json',
+                            'method':'get',
+                            'name':'paging'
+                        },
+                        {
+                            'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json',
+                            'method':'post',
+                            'name':'batch'
+                        }
+                    ],
+                    'X-Media-Type':'application/vnd.hedtech.integration.v12+json',
+                    'methods':['get','post','put'],
+                    'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                    'version':'v12'
+                },
+                {
+                    'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                    'getAllPatterns':
+                    [
+                        {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                        {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                    ],
+                    'X-Media-Type':'application/vnd.hedtech.integration.v12.0.0+json',
+                    'methods':['get','post','put'],
+                    'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                    'version':'v12.0.0'
+                },
+                {
+                    'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                                   'getAllPatterns':[{'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},{'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json',
+                                   'method':'post','name':'batch'}],'X-Media-Type':'application/vnd.hedtech.integration.v12.1.0+json','methods':['get','post','put'],'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                                   'version':'v12.1.0'
+                },
+                {
+                    'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                    'getAllPatterns':
+                    [
+                        {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                        {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                    ],
+                    'X-Media-Type':'application/vnd.hedtech.integration.v12.2.0+json',
+                    'methods':['get','post','put'],
+                    'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                    'version':'v12.2.0'
+                },
+                {
+                    'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                    'getAllPatterns':
+                    [
+                        {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                        {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                    ],
+                    'X-Media-Type':'application/vnd.hedtech.integration.v12.3.0+json',
+                    'methods':['get','post','put'],
+                    'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}],
+                    'version':'v12.3.0'
+                },
+                {
+                    'filters':['names.title','names.firstName','names.middleName','names.lastNamePrefix','names.lastName','names.pedigree','roles.role','credentials.type','credentials.value','alternativeCredentials.type.id','alternativeCredentials.value','emails.address'],
+                    'getAllPatterns':[
+                        {'X-Media-Type':'application/vnd.hedtech.integration.v12+json','method':'get','name':'paging'},
+                        {'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json','method':'post','name':'batch'}
+                    ],
+                    'X-Media-Type':'application/json',
+                    'methods':['get','post','put'],
+                    'namedQueries':[{'filters':['personFilter'],'name':'personFilter'}]
+                },
+                {
+                    'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1.0.0+json',
+                    'methods':['get','post'],
+                    'version':'v1.0.0'
+                },
+                {
+                    'X-Media-Type':'application/vnd.hedtech.integration.bulk-requests.v1+json',
+                    'methods':['get','post'],
+                    'version':'v1'
+                }
+            ]
+        }
+    }
+]
+""";
         }
 
         public static string GetChangeNotificationSingleJson()
         {
-            return @"{'id':'55840','published':'2017-12-12 22:37:44.242116+00','resource':{'name':'accounting-string-component-values','id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb',
-                    'version':'application/vnd.hedtech.integration.v11+json','domain':'https://somedomain.com'},'operation':'replaced','contentType':'resource-representation',
-                    'content':{'value':'11-00-01-80-20511-52011','description':'Staff Wages Part Time : Fadda 2 Research Grant','component':{'id':'76fc67b1-da04-4fa4-8eec-2ced9880f206'},
-                    'transactionStatus':'available','type':{'account':'expense'},'metadata':{},'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb'},'publisher':{'id':'853d32d4-412b-4518-9d70-a7ba8b7e7ce4',
-                    'applicationName':'Colleague Main Authoritative Source','tenant':{'id':'123','alias':'alias','name':'Some Name','environment':'Env123'}}}";
+            return
+"""
+{
+    'id':'55840',
+    'published':'2017-12-12 22:37:44.242116+00',
+    'resource':{'name':'accounting-string-component-values','id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb','version':'application/vnd.hedtech.integration.v11+json','domain':'https://somedomain.com'},
+    'operation':'replaced',
+    'contentType':'resource-representation',
+    'content':
+    {
+        'value':'11-00-01-80-20511-52011',
+        'description':'Staff Wages Part Time : Fadda 2 Research Grant',
+        'component':{'id':'76fc67b1-da04-4fa4-8eec-2ced9880f206'},
+        'transactionStatus':'available',
+        'type':{'account':'expense'},
+        'metadata':{},
+        'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb'
+    },
+    'publisher':
+    {
+        'id':'853d32d4-412b-4518-9d70-a7ba8b7e7ce4',
+        'applicationName':'Colleague Main Authoritative Source',
+        'tenant':{'id':'123','alias':'alias','name':'Some Name','environment':'Env123'}
+    }
+}
+""";
         }
 
         public static string GetMockSingleProxyRecord()
         {
-            return @"{'value':'EJR-MUSC','description':'Eleanor's Music Project','component':{'id':'77f64fef-5869-49e1-8dca-756c2584331c'},'transactionStatus':'available','type':{'account':'expense'},
-                      'effectiveStartOn':'2013-03-18T00:00:00','effectiveEndOn':'2014-06-30T00:00:00','status':'active','grants':[{'id':'1e7750fe-fcae-4d2a-9412-296c9ae3526f'}],
-                      'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb'}";
+            return
+"""
+{
+    'value':'EJR-MUSC',
+    'description':'Eleanor's Music Project',
+    'component':{'id':'77f64fef-5869-49e1-8dca-756c2584331c'},
+    'transactionStatus':'available',
+    'type':{'account':'expense'},
+    'effectiveStartOn':'2013-03-18T00:00:00',
+    'effectiveEndOn':'2014-06-30T00:00:00',
+    'status':'active',
+    'grants':[{'id':'1e7750fe-fcae-4d2a-9412-296c9ae3526f'}],
+    'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb'
+}
+""";
         }
 
         public static string GetChangeNotificationArrayJson()
         {
-            return @"[{'id':'55840','published':'2017-12-12 22:37:44.242116+00','resource':{'name':'accounting-string-component-values','id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb',
-                    'version':'application/vnd.hedtech.integration.v11+json'},'operation':'replaced','contentType':'resource-representation','content':{'value':'11-00-01-80-20511-52011',
-                    'description':'Staff Wages Part Time : Fadda 2 Research Grant','component':{'id':'76fc67b1-da04-4fa4-8eec-2ced9880f206'},'transactionStatus':'available',
-                    'type':{'account':'expense'},'metadata':{},'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb'},'publisher':{'id':'853d32d4-412b-4518-9d70-a7ba8b7e7ce4',
-                    'applicationName':'Colleague Main Authoritative Source'}},{'id':'55841','published':'2017-12-12 22:37:44.242116+00','resource':{'name':'accounting-string-component-values',
-                    'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb','version':'application/vnd.hedtech.integration.v11+json'},'operation':'replaced','contentType':'resource-representation',
-                    'content':{'value':'11-00-01-80-20511-52011','description':'Staff Wages Part Time : Fadda 2 Research Grant','component':{'id':'76fc67b1-da04-4fa4-8eec-2ced9880f206'},
-                    'transactionStatus':'available','type':{'account':'expense'},'metadata':{},'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb'},'publisher':{'id':'853d32d4-412b-4518-9d70-a7ba8b7e7ce4',
-                    'applicationName':'Colleague Main Authoritative Source'}}]";
+            return
+"""
+[
+    {
+        'id':'55840',
+        'published':'2017-12-12 22:37:44.242116+00',
+        'resource':{'name':'accounting-string-component-values','id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb','version':'application/vnd.hedtech.integration.v11+json'},
+        'operation':'replaced',
+        'contentType':'resource-representation',
+        'content':
+        {
+            'value':'11-00-01-80-20511-52011',
+            'description':'Staff Wages Part Time : Fadda 2 Research Grant',
+            'component':{'id':'76fc67b1-da04-4fa4-8eec-2ced9880f206'},
+            'transactionStatus':'available',
+            'type':{'account':'expense'},
+            'metadata':{},
+            'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb'
+        },
+        'publisher':{'id':'853d32d4-412b-4518-9d70-a7ba8b7e7ce4','applicationName':'Colleague Main Authoritative Source'}
+    },
+    {
+        'id':'55841',
+        'published':'2017-12-12 22:37:44.242116+00',
+        'resource':{'name':'accounting-string-component-values','id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb','version':'application/vnd.hedtech.integration.v11+json'},
+        'operation':'replaced',
+        'contentType':'resource-representation',
+        'content':{
+            'value':'11-00-01-80-20511-52011',
+            'description':'Staff Wages Part Time : Fadda 2 Research Grant',
+            'component':{'id':'76fc67b1-da04-4fa4-8eec-2ced9880f206'},
+            'transactionStatus':'available',
+            'type':{'account':'expense'},
+            'metadata':{},
+            'id':'f15a95e1-d12f-4833-8cfa-6cbe7995d1bb'
+        },
+        'publisher':{'id':'853d32d4-412b-4518-9d70-a7ba8b7e7ce4','applicationName':'Colleague Main Authoritative Source'}
+    }
+]
+""";
         }
 
         public static string GetAppConfig()
         {
-            return @"{'id':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6','name':'client app','subscriptions':[{'resourceName':'address-types','applicationId':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6'}],
-                      'ownerOverrides':[{'resourceName':'buildings','applicationId':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6'},{'resourceName':'address-types','applicationId':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6'}],
-                      'metadata':{'createdBy':'bmcfarland@ellucian.me','createdOn':'2020-07-21T17:58:59.88Z','modifiedBy':'bmcfarland@ellucian.me','modifiedOn':'2020-10-27T16:28:34.979Z','version':'4.9.2'}}";
+            return
+"""
+{
+    'id':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6',
+    'name':'client app',
+    'subscriptions':[{'resourceName':'address-types','applicationId':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6'}],
+    'ownerOverrides':[{'resourceName':'buildings','applicationId':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6'},{'resourceName':'address-types','applicationId':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6'}],
+    'metadata':{'createdBy':'bmcfarland@ellucian.me','createdOn':'2020-07-21T17:58:59.88Z','modifiedBy':'bmcfarland@ellucian.me','modifiedOn':'2020-10-27T16:28:34.979Z','version':'4.9.2'}
+}
+""";
         }
 
         public static string GetSingleForStronglyTyped()
         {
-            return @"{'id':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6','description':'SomeDescription'}";
+            return
+"""
+{
+    'id':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6',
+    'description':'SomeDescription'
+}
+""";
         }
         public static string GetArrayForStronglyTyped()
         {
-            return @"[{'id':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6','description':'SomeDescription'}]";
+            return
+"""
+[
+    {
+        'id':'eef6b098-17fe-4d9e-b8f8-5d949420ffa6',
+        'description':'SomeDescription'
+    }
+]
+""";
         }
 
         #endregion
