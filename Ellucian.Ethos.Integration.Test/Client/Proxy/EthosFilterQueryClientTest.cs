@@ -132,17 +132,17 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void GetWithCriteriaFilterAsync_ResourceName_ArgumentNullException()
+        public async Task GetWithCriteriaFilterAsync_ResourceName_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithCriteriaFilterAsync( "", version, "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithCriteriaFilterAsync( "", version, "" ) );
         }
 
         [Fact]
-        public void GetWithCriteriaFilterAsync_CriteriaFilterStr_ArgumentNullException()
+        public async Task GetWithCriteriaFilterAsync_CriteriaFilterStr_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithCriteriaFilterAsync( criteriaResourceName, version, "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithCriteriaFilterAsync( criteriaResourceName, version, "" ) );
         }
 
         [Fact]
@@ -162,31 +162,31 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void GetWithSimpleCriteriaFilterAsync_ResourceName_ArgumentNullException()
+        public async Task GetWithSimpleCriteriaFilterAsync_ResourceName_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithSimpleCriteriaValuesAsync( "", "name", "firstName", "FIRST_NAME" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithSimpleCriteriaValuesAsync( "", "name", "firstName", "FIRST_NAME" ) );
         }
 
         [Fact]
-        public void GetWithSimpleCriteriaFilterAsync_CriteriaSetName_ArgumentNullException()
+        public async Task GetWithSimpleCriteriaFilterAsync_CriteriaSetName_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithSimpleCriteriaValuesAsync( criteriaResourceName, "", "firstName", "FIRST_NAME" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithSimpleCriteriaValuesAsync( criteriaResourceName, "", "firstName", "FIRST_NAME" ) );
         }
 
         [Fact]
-        public void GetWithSimpleCriteriaFilterAsync_CriteriaKey_ArgumentNullException()
+        public async Task GetWithSimpleCriteriaFilterAsync_CriteriaKey_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithSimpleCriteriaValuesAsync( criteriaResourceName, "name", " ", "FIRST_NAME" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithSimpleCriteriaValuesAsync( criteriaResourceName, "name", " ", "FIRST_NAME" ) );
         }
 
         [Fact]
-        public void GetWithSimpleCriteriaFilterAsync_CriteriaValue_ArgumentNullException()
+        public async Task GetWithSimpleCriteriaFilterAsync_CriteriaValue_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithSimpleCriteriaValuesAsync( criteriaResourceName, "name", "firstName", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithSimpleCriteriaValuesAsync( criteriaResourceName, "name", "firstName", "" ) );
         }
 
         [Fact]
@@ -212,31 +212,31 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void GetWithFilterMapAsync_ResourceName_ArgumentNullException()
+        public async Task GetWithFilterMapAsync_ResourceName_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithFilterMapAsync( "", version, "filterMapStr" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithFilterMapAsync( "", version, "filterMapStr" ) );
         }
 
         [Fact]
-        public void GetWithFilterMapAsync_FilterMapStr_ArgumentNullException()
+        public async Task GetWithFilterMapAsync_FilterMapStr_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithFilterMapAsync( criteriaResourceName, version, "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithFilterMapAsync( criteriaResourceName, version, "" ) );
         }
 
         [Fact]
-        public void GetWithFilterMapAsync_FilterMap_ResourceName_ArgumentNullException()
+        public async Task GetWithFilterMapAsync_FilterMap_ResourceName_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosFilterQueryClientWithFilterMap().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithFilterMapAsync( "", version, new FilterMap() ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithFilterMapAsync( "", version, new FilterMap() ) );
         }
 
         [Fact]
-        public void GetWithFilterMapAsync_FilterMap__ArgumentNullException()
+        public async Task GetWithFilterMapAsync_FilterMap__ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosFilterQueryClientWithFilterMap().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithFilterMapAsync( criteriaResourceName, version, default( FilterMap ) ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithFilterMapAsync( criteriaResourceName, version, default( FilterMap ) ) );
         }
 
         [Fact]
@@ -329,17 +329,17 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void GetPagesFromOffsetWithCriteriaFilterAsync_ResourceName__ArgumentNullException()
+        public async Task GetPagesFromOffsetWithCriteriaFilterAsync_ResourceName__ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithCriteriaFilterAsync( "", version, new CriteriaFilter(), 10, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithCriteriaFilterAsync( "", version, new CriteriaFilter(), 10, 10 ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetWithCriteriaFilterAsync_criteriaFilter__ArgumentNullException()
+        public async Task GetPagesFromOffsetWithCriteriaFilterAsync_criteriaFilter__ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithCriteriaFilterAsync( criteriaResourceName, version, null, 10, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithCriteriaFilterAsync( criteriaResourceName, version, null, 10, 10 ) );
         }
 
         [Fact]
@@ -423,17 +423,17 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void GetPagesFromOffsetWithFilterMapAsync_ResourceName_ArgumentNullException()
+        public async Task GetPagesFromOffsetWithFilterMapAsync_ResourceName_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithFilterMapAsync( "", version, new FilterMap(), 10, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithFilterMapAsync( "", version, new FilterMap(), 10, 10 ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetWithCriteriaFilterAsync_FilterMap_ArgumentNullException()
+        public async Task GetPagesFromOffsetWithCriteriaFilterAsync_FilterMap_ArgumentNullException()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithFilterMapAsync( criteriaResourceName, version, default( FilterMap ), 10, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithFilterMapAsync( criteriaResourceName, version, default( FilterMap ), 10, 10 ) );
         }
 
         [Fact]
@@ -496,33 +496,33 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void GetWithQapiAsync_Exceptions()
+        public async Task GetWithQapiAsync_Exceptions()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync( "", "{}", "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync( "resourceName", " ", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync( "", "{}", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync( "resourceName", " ", "" ) );
         }
 
         [Fact]
-        public void GetWithQapiAsync_JObject_Exceptions()
-        {
-            JObject jobj = null;
-            filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync( "", JObject.FromObject( new { id = '1' } ), "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync( "resourceName", jobj, "" ) );
-        }
-
-        [Fact]
-        public void GetWithQapiAsync_JObject_ST_Exceptions()
+        public async Task GetWithQapiAsync_JObject_Exceptions()
         {
             JObject jobj = null;
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync<JObject>( "", JObject.FromObject( new { id = '1' } ), "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync<JObject>( "resourceName", jobj, "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync( "", JObject.FromObject( new { id = '1' } ), "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync( "resourceName", jobj, "" ) );
         }
 
         [Fact]
-        public async void GetWithQapiAsync_String_WithVersion()
+        public async Task GetWithQapiAsync_JObject_ST_Exceptions()
+        {
+            JObject jobj = null;
+            filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync<JObject>( "", JObject.FromObject( new { id = '1' } ), "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetWithQapiAsync<JObject>( "resourceName", jobj, "" ) );
+        }
+
+        [Fact]
+        public async Task GetWithQapiAsync_String_WithVersion()
         {
             string requestBody = @"{
                     a: 'b'
@@ -535,7 +535,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetWithQapiAsync_JObject_WithVersion()
+        public async Task GetWithQapiAsync_JObject_WithVersion()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosFilterQueryClientWithOK( criteriaFilterStr ).httpClient );
@@ -546,7 +546,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetWithQapiAsync_StronglyTyped_WithVersion()
+        public async Task GetWithQapiAsync_StronglyTyped_WithVersion()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockHttpClientWithSingleRecordForStronglyTyped() );
@@ -559,33 +559,33 @@ namespace Ellucian.Ethos.Integration.Test
         //-----------
 
         [Fact]
-        public void GetPagesFromOffsetWithQAPIAsync_Exceptions()
+        public async Task GetPagesFromOffsetWithQAPIAsync_Exceptions()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync( "", "{}", "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync( "resourceName", " ", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync( "", "{}", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync( "resourceName", " ", "" ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetWithQAPIAsync_JObject_Exceptions()
-        {
-            JObject jobj = null;
-            filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync( "", JObject.FromObject( new { id = '1' } ), "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync( "resourceName", jobj, "" ) );
-        }
-
-        [Fact]
-        public void GetPagesFromOffsetWithQAPIAsync_JObject_ST_Exceptions()
+        public async Task GetPagesFromOffsetWithQAPIAsync_JObject_Exceptions()
         {
             JObject jobj = null;
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync<JObject>( "", JObject.FromObject( new { id = '1' } ), "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync<JObject>( "resourceName", jobj, "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync( "", JObject.FromObject( new { id = '1' } ), "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync( "resourceName", jobj, "" ) );
         }
 
         [Fact]
-        public async void GetPagesFromOffsetWithQAPIAsync_String_WithVersion()
+        public async Task GetPagesFromOffsetWithQAPIAsync_JObject_ST_Exceptions()
+        {
+            JObject jobj = null;
+            filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync<JObject>( "", JObject.FromObject( new { id = '1' } ), "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesFromOffsetWithQAPIAsync<JObject>( "resourceName", jobj, "" ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetWithQAPIAsync_String_WithVersion()
         {
             string requestBody = @"{
                     a: 'b'
@@ -597,7 +597,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetPagesFromOffsetWithQAPIAsync_String_WithVersion_Paging_Offset()
+        public async Task GetPagesFromOffsetWithQAPIAsync_String_WithVersion_Paging_Offset()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosQAPIClientWithOK( offsetLimit ) );
@@ -607,7 +607,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetPagesFromOffsetWithQAPIAsync_JObject_WithVersion()
+        public async Task GetPagesFromOffsetWithQAPIAsync_JObject_WithVersion()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosFilterQueryClientWithOK( criteriaFilterStr ).httpClient );
@@ -617,7 +617,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetPagesFromOffsetWithQAPIAsync_StronglyTyped_WithVersion()
+        public async Task GetPagesFromOffsetWithQAPIAsync_StronglyTyped_WithVersion()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosFilterQueryClientWithOK( criteriaFilterStr ).httpClient );
@@ -629,33 +629,33 @@ namespace Ellucian.Ethos.Integration.Test
         // -------
 
         [Fact]
-        public void GetPagesWithQAPIAsync_Exceptions()
+        public async Task GetPagesWithQAPIAsync_Exceptions()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync( "", "{}", "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync( "resourceName", " ", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync( "", "{}", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync( "resourceName", " ", "" ) );
         }
 
         [Fact]
-        public void GetPagesWithQAPIAsync_JObject_Exceptions()
-        {
-            JObject jobj = null;
-            filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync( "", JObject.FromObject( new { id = '1' } ), "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync( "resourceName", jobj, "" ) );
-        }
-
-        [Fact]
-        public void GetPagesWithQAPIAsync_JObject_ST_Exceptions()
+        public async Task GetPagesWithQAPIAsync_JObject_Exceptions()
         {
             JObject jobj = null;
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync<JObject>( "", JObject.FromObject( new { id = '1' } ), "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync<JObject>( "resourceName", jobj, "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync( "", JObject.FromObject( new { id = '1' } ), "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync( "resourceName", jobj, "" ) );
         }
 
         [Fact]
-        public async void GetPagesWithQAPIAsync_String_WithVersion()
+        public async Task GetPagesWithQAPIAsync_JObject_ST_Exceptions()
+        {
+            JObject jobj = null;
+            filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync<JObject>( "", JObject.FromObject( new { id = '1' } ), "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await filterClient.GetPagesWithQAPIAsync<JObject>( "resourceName", jobj, "" ) );
+        }
+
+        [Fact]
+        public async Task GetPagesWithQAPIAsync_String_WithVersion()
         {
             string requestBody = @"{
                     a: 'b'
@@ -667,7 +667,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetPagesWithQAPIAsync_String_WithVersion_Paging_Offset()
+        public async Task GetPagesWithQAPIAsync_String_WithVersion_Paging_Offset()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosQAPIClientWithOK( offsetLimit ) );
@@ -677,7 +677,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetPagesWithQAPIAsync_JObject_WithVersion()
+        public async Task GetPagesWithQAPIAsync_JObject_WithVersion()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosFilterQueryClientWithOK( criteriaFilterStr ).httpClient );
@@ -687,7 +687,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetPagesWithQAPIAsync_StronglyTyped_WithVersion()
+        public async Task GetPagesWithQAPIAsync_StronglyTyped_WithVersion()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosFilterQueryClientWithOK( criteriaFilterStr ).httpClient );
@@ -697,7 +697,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_ResourceName_Null_Returns_Zero()
+        public async Task GetTotalCountAsync_ResourceName_Null_Returns_Zero()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
             var response = await filterClient.GetTotalCountAsync( string.Empty, JObject.FromObject( new { id = '1' } ).ToString(), string.Empty );
@@ -705,7 +705,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_QapiRequestBody_Null_Returns_Zero()
+        public async Task GetTotalCountAsync_QapiRequestBody_Null_Returns_Zero()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
             var response = await filterClient.GetTotalCountAsync( criteriaResourceName, string.Empty, string.Empty );
@@ -713,7 +713,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_JObject_ResourceName_Null_Returns_Zero()
+        public async Task GetTotalCountAsync_JObject_ResourceName_Null_Returns_Zero()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
             var response = await filterClient.GetTotalCountAsync( string.Empty, JObject.FromObject( new { id = '1' } ), string.Empty );
@@ -721,7 +721,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_JObject__QapiRequestBody_Null_Returns_Zero()
+        public async Task GetTotalCountAsync_JObject__QapiRequestBody_Null_Returns_Zero()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
             JObject jObj = null;
@@ -730,7 +730,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_ST__ResourceName_Null_Returns_Zero()
+        public async Task GetTotalCountAsync_ST__ResourceName_Null_Returns_Zero()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
             var response = await filterClient.GetTotalCountAsync<JObject>( string.Empty, JObject.FromObject( new { id = '1' } ), string.Empty );
@@ -738,7 +738,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_ST__QapiRequestBody_Null_Returns_Zero()
+        public async Task GetTotalCountAsync_ST__QapiRequestBody_Null_Returns_Zero()
         {
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, new HttpClient() );
             JObject jObj = null;
@@ -747,7 +747,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_String_WithVersion()
+        public async Task GetTotalCountAsync_String_WithVersion()
         {
             string requestBody = @"{
                     a: 'b'
@@ -758,7 +758,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_JObject_WithVersion()
+        public async Task GetTotalCountAsync_JObject_WithVersion()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosFilterQueryClientWithOK( criteriaFilterStr ).httpClient );
@@ -767,7 +767,7 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public async void GetTotalCountAsync_StronglyTyped_WithVersion()
+        public async Task GetTotalCountAsync_StronglyTyped_WithVersion()
         {
             JObject jobj = JObject.FromObject( new { id = '1' } );
             filterClient = new EthosFilterQueryClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockHttpClientWithSingleRecordForStronglyTyped() );

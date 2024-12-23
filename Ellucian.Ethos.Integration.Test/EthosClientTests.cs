@@ -36,13 +36,13 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void EthosClient_GetAsync_NotFound()
+        public async Task EthosClient_GetAsync_NotFound()
         {
             string resourceName = "student-cohorts";
             string url = $"{EthosIntegrationUrls.Api( Ethos.Integration.Authentication.SupportedRegions.US, resourceName )}";
             (Dictionary<string, string> dict, HttpClient client) data = SampleTestDataRepository.GetMockClientWithNotFound();
             EthosClient ethosClient = new EthosClient( SampleTestDataRepository.API_KEY, data.client );
-            _ = Assert.ThrowsAsync<HttpRequestException>( async () => await ethosClient.GetAsync( data.dict, url ) );
+            _ = await Assert.ThrowsAsync<HttpRequestException>( async () => await ethosClient.GetAsync( data.dict, url ) );
         }
 
         #endregion

@@ -42,10 +42,10 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void GET_Empty_ResourceName_ReturnNull()
+        public async Task GET_Empty_ResourceName_ReturnNull()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
         }
 
         [Fact]
@@ -62,10 +62,10 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void GET_Empty_ResourceName_WithVersion_ReturnNull()
+        public async Task GET_Empty_ResourceName_WithVersion_ReturnNull()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
         }
 
         [Fact]
@@ -1044,618 +1044,618 @@ namespace Ellucian.Ethos.Integration.Test
         #region Exception Tests
 
         [Fact]
-        public void GetAsString_Empty_ResourceName_ReturnNull()
+        public async Task GetAsString_Empty_ResourceName_ReturnNull()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosProxyClientWithOK().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
         }
 
         [Fact]
-        public void GetAsString_Empty_ResourceName_WithVersion_ReturnNull()
+        public async Task GetAsString_Empty_ResourceName_WithVersion_ReturnNull()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
         }
 
         [Fact]
-        public void GetAsJsonArray_Empty_ResourceName_ReturnNull()
+        public async Task GetAsJsonArray_Empty_ResourceName_ReturnNull()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
         }
 
         [Fact]
-        public void GetAsJsonArray_Empty_ResourceName_WithVersion_ReturnNull()
+        public async Task GetAsJsonArray_Empty_ResourceName_WithVersion_ReturnNull()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsync( string.Empty, string.Empty ) );
         }
 
         [Fact]
-        public void GetAllPagesAsync_ReaourceName_EmptyString_Null_ArgumentNullException()
+        public async Task GetAllPagesAsync_ReaourceName_EmptyString_Null_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( string.Empty, "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( null, "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( string.Empty, "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( null, "" ) );
         }
 
         [Fact]
-        public void GetAllPagesAsync_ReaourceName_EmptyString_Null_Version_ArgumentNullException()
+        public async Task GetAllPagesAsync_ReaourceName_EmptyString_Null_Version_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( string.Empty, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( null, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( string.Empty, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( null, version ) );
         }
 
         [Fact]
-        public void GetAllPagesAsync_ReaourceName_EmptyString_Null_PageSize_ArgumentNullException()
+        public async Task GetAllPagesAsync_ReaourceName_EmptyString_Null_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( null, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( null, "", 0 ) );
         }
 
         [Fact]
-        public void GetAllPagesAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
+        public async Task GetAllPagesAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( null, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsync( null, "", 0 ) );
         }
 
         [Fact]
-        public void GetAllPagesAsStringsAsync_ReaourceName_EmptyString_Null_ArgumentNullException()
+        public async Task GetAllPagesAsStringsAsync_ReaourceName_EmptyString_Null_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( string.Empty ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( null ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( null ) );
         }
 
         [Fact]
-        public void GetAllPagesAsStringsAsync_ReaourceName_EmptyString_Null_Version_ArgumentNullException()
+        public async Task GetAllPagesAsStringsAsync_ReaourceName_EmptyString_Null_Version_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( string.Empty, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( null, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( string.Empty, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( null, version ) );
         }
 
         [Fact]
-        public void GetAllPagesAsStringsAsync_ReaourceName_EmptyString_Null_PageSize_ArgumentNullException()
+        public async Task GetAllPagesAsStringsAsync_ReaourceName_EmptyString_Null_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( null, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( null, "", 0 ) );
         }
 
         [Fact]
-        public void GetAllPagesAsStringsAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
+        public async Task GetAllPagesAsStringsAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( null, "", 0 ) );
-        }
-
-
-        [Fact]
-        public void GetAllPagesAsJsonArraysAsync_ReaourceName_EmptyString_Null_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( string.Empty ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( null ) );
-        }
-
-        [Fact]
-        public void GetAllPagesAsJsonArraysAsync_ReaourceName_EmptyString_Null_Version_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( string.Empty, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( null, version ) );
-        }
-
-        [Fact]
-        public void GetAllPagesAsJsonArraysAsync_ReaourceName_EmptyString_Null_PageSize_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( null, "", 0 ) );
-        }
-
-        [Fact]
-        public void GetAllPagesAsJsonArraysAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( null, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsStringsAsync( null, "", 0 ) );
         }
 
 
         [Fact]
-        public void GetAllPagesFromOffsetAsync_Offset_ArgumentNullException()
+        public async Task GetAllPagesAsJsonArraysAsync_ReaourceName_EmptyString_Null_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( null, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( null ) );
         }
 
         [Fact]
-        public void GetAllPagesFromOffsetAsync_Version_Offset_ArgumentNullException()
+        public async Task GetAllPagesAsJsonArraysAsync_ReaourceName_EmptyString_Null_Version_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( string.Empty, "", 0, 10 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( null, "", 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( string.Empty, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( null, version ) );
         }
 
         [Fact]
-        public void GetAllPagesFromOffsetAsync_Version_Offset_PageSize_ArgumentNullException()
+        public async Task GetAllPagesAsJsonArraysAsync_ReaourceName_EmptyString_Null_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( string.Empty, version, 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( null, version, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( null, "", 0 ) );
         }
 
         [Fact]
-        public void GetAllPagesFromOffsetAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
+        public async Task GetAllPagesAsJsonArraysAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( string.Empty, version, 0, 10 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( null, version, 0, 10 ) );
-        }
-
-
-        [Fact]
-        public void GetAllPagesFromOffsetAsStringsAsync_Offset_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( string.Empty, "", 0, 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( null, "", 0, 0 ) );
-        }
-
-        [Fact]
-        public void GetAllPagesFromOffsetAsStringsAsync_Offset_PageSize_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( string.Empty, "", 0, 10 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( null, "", 0, 10 ) );
-        }
-
-        [Fact]
-        public void GetAllPagesFromOffsetAsStringsAsync_Version_Offset_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( string.Empty, version, 0, 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( null, version, 0, 0 ) );
-        }
-
-        [Fact]
-        public void GetAllPagesFromOffsetAsStringsAsync_Version_Offset_PageSize_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( string.Empty, version, 0, 10 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( null, version, 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesAsJArraysAsync( null, "", 0 ) );
         }
 
 
         [Fact]
-        public void GetAllPagesFromOffsetAsJsonArraysAsync_Offset_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsync_Offset_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( null, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( null, "", 0 ) );
         }
 
         [Fact]
-        public void GetAllPagesFromOffsetAsJsonArraysAsync_Version_Offset_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsync_Version_Offset_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( string.Empty, "", 0, 10 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( null, "", 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( string.Empty, "", 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( null, "", 0, 10 ) );
         }
 
         [Fact]
-        public void GetAllPagesFromOffsetAsJsonArraysAsync_Version_Offset_PageSize_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsync_Version_Offset_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( string.Empty, version, 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( null, version, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( string.Empty, version, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( null, version, 0 ) );
         }
 
         [Fact]
-        public void GetAllPagesFromOffsetAsJsonArraysAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( string.Empty, version, 0, 10 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( null, version, 0, 10 ) );
-        }
-
-
-        [Fact]
-        public void GetPagesAsync_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( null, "", 0 ) );
-        }
-
-        [Fact]
-        public void GetPagesAsync_Version_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( string.Empty, version, 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( null, version, 0 ) );
-        }
-
-        [Fact]
-        public void GetPagesAsync_PageSize_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( string.Empty, version, 10, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( null, version, 10, 1 ) );
-        }
-
-        [Fact]
-        public void GetPagesAsync_Version_PageSize_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( string.Empty, version, 10, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( null, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( string.Empty, version, 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsync( null, version, 0, 10 ) );
         }
 
 
         [Fact]
-        public void GetPagesAsStringsAsync_NumPages_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsStringsAsync_Offset_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( string.Empty, "", 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( null, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( string.Empty, "", 0, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( null, "", 0, 0 ) );
         }
 
         [Fact]
-        public void GetPagesAsStringsAsync_Version_NumPages_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsStringsAsync_Offset_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( string.Empty, version, 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( null, version, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( string.Empty, "", 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( null, "", 0, 10 ) );
         }
 
         [Fact]
-        public void GetPagesAsStringsAsync_PageSize_NumPages_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsStringsAsync_Version_Offset_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( string.Empty, version, 10, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( null, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( string.Empty, version, 0, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( null, version, 0, 0 ) );
         }
 
         [Fact]
-        public void GetPagesAsStringsAsync_Version_PageSize_NumPages_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsStringsAsync_Version_Offset_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( string.Empty, version, 10, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( null, version, 10, 1 ) );
-        }
-
-
-        [Fact]
-        public void GetPagesAsJsonArraysAsync_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( string.Empty, "", 0, 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( null, "", 0, 0 ) );
-        }
-
-        [Fact]
-        public void GetPagesAsJsonArraysAsync_Version_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( string.Empty, version, 0 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( null, version, 0 ) );
-        }
-
-        [Fact]
-        public void GetPagesAsJsonArraysAsync_PageSize_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( string.Empty, version, 10, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( null, version, 10, 1 ) );
-        }
-
-        [Fact]
-        public void GetPagesAsJsonArraysAsync_Version_PageSize_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( string.Empty, version, 10, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( null, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( string.Empty, version, 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsStringsAsync( null, version, 0, 10 ) );
         }
 
 
         [Fact]
-        public void GetPagesFromOffsetAsync_Offset_NumPages_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsJsonArraysAsync_Offset_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( string.Empty, "", 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( null, "", 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( null, "", 0 ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetAsync_PageSize_Offset_NumPages_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsJsonArraysAsync_Version_Offset_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( string.Empty, "", 1, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( null, "", 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( string.Empty, "", 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( null, "", 0, 10 ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetAsync_Version_Offset_NumPages_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsJsonArraysAsync_Version_Offset_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( string.Empty, version, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( null, version, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( string.Empty, version, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( null, version, 0 ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetAsync_Version__PageSize_Offset_NumPages_ArgumentNullException()
+        public async Task GetAllPagesFromOffsetAsJsonArraysAsync_ReaourceName_EmptyString_Null_Version_PageSize_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( string.Empty, version, 1, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( null, version, 1, 0, 1 ) );
-        }
-
-
-        [Fact]
-        public void GetPagesFromOffsetAsStringsAsync_Offset_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( string.Empty, "", 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( null, "", 0, 1 ) );
-        }
-
-        [Fact]
-        public void GetPagesFromOffsetAsStringsAsync_PageSize_Offset_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( string.Empty, "", 1, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( null, "", 1, 0, 1 ) );
-        }
-
-        [Fact]
-        public void GetPagesFromOffsetAsStringsAsync_Version_Offset_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( string.Empty, version, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( null, version, 0, 1 ) );
-        }
-
-        [Fact]
-        public void GetPagesFromOffsetAsStringsAsync__PageSize_Offset_NumPages_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( string.Empty, version, 1, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( null, version, 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( string.Empty, version, 0, 10 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAllPagesFromOffsetAsJArraysAsync( null, version, 0, 10 ) );
         }
 
 
         [Fact]
-        public void GetPagesFromOffsetAsJsonArraysAsync_Offset_NumPages_ArgumentNullException()
+        public async Task GetPagesAsync_NumPages_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( string.Empty, "", 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( null, "", 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( null, "", 0 ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetAsJsonArraysAsync_PageSize_Offset_NumPages_ArgumentNullException()
+        public async Task GetPagesAsync_Version_NumPages_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( string.Empty, "", 1, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( null, "", 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( string.Empty, version, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( null, version, 0 ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetAsJsonArraysAsync_Version_Offset_NumPages_ArgumentNullException()
+        public async Task GetPagesAsync_PageSize_NumPages_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( string.Empty, version, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( null, version, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( string.Empty, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( null, version, 10, 1 ) );
         }
 
         [Fact]
-        public void GetPagesFromOffsetAsJsonArraysAsync__PageSize_Offset_NumPages_ArgumentNullException()
+        public async Task GetPagesAsync_Version_PageSize_NumPages_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( string.Empty, version, 1, 0, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( null, version, 1, 0, 1 ) );
-        }
-
-
-        [Fact]
-        public void GetRowsAsync_NumRows_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( string.Empty, "", 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( null, "", 1 ) );
-        }
-
-        [Fact]
-        public void GetRowsAsync_Version_NumRows_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( string.Empty, version, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( null, version, 1 ) );
-        }
-
-        [Fact]
-        public void GetRowsAsync_PageSize_NumRows_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( string.Empty, "", 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( null, "", 1, 1 ) );
-        }
-
-        [Fact]
-        public void GetRowsAsync_Version_PageSize_NumRows_ArgumentNullException()
-        {
-            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( string.Empty, version, 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( null, version, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( string.Empty, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsync( null, version, 10, 1 ) );
         }
 
 
         [Fact]
-        public void GetRowsAsStringsAsync_NumRows_ArgumentNullException()
+        public async Task GetPagesAsStringsAsync_NumPages_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsStringsAsync( string.Empty, "", 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsStringsAsync( null, "", 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( string.Empty, "", 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( null, "", 0 ) );
         }
 
         [Fact]
-        public void GetRowsAsStringsAsync_Version_NumRows_ArgumentNullException()
+        public async Task GetPagesAsStringsAsync_Version_NumPages_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsStringsAsync( string.Empty, version, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsStringsAsync( null, version, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( string.Empty, version, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( null, version, 0 ) );
         }
 
         [Fact]
-        public void GetRowsAsJsonArraysAsync_NumRows_ArgumentNullException()
+        public async Task GetPagesAsStringsAsync_PageSize_NumPages_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsJArrayAsync( string.Empty, "", 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsJArrayAsync( null, "", 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( string.Empty, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( null, version, 10, 1 ) );
         }
 
         [Fact]
-        public void GetRowsAsJsonArraysAsync_Version_NumRows_ArgumentNullException()
+        public async Task GetPagesAsStringsAsync_Version_PageSize_NumPages_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsJArrayAsync( string.Empty, version, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsJArrayAsync( null, version, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( string.Empty, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsStringsAsync( null, version, 10, 1 ) );
+        }
+
+
+        [Fact]
+        public async Task GetPagesAsJsonArraysAsync_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( string.Empty, "", 0, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( null, "", 0, 0 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesAsJsonArraysAsync_Version_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( string.Empty, version, 0 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( null, version, 0 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesAsJsonArraysAsync_PageSize_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( string.Empty, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( null, version, 10, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesAsJsonArraysAsync_Version_PageSize_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( string.Empty, version, 10, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesAsJArraysAsync( null, version, 10, 1 ) );
+        }
+
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsync_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( string.Empty, "", 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( null, "", 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsync_PageSize_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( string.Empty, "", 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( null, "", 1, 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsync_Version_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( string.Empty, version, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( null, version, 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsync_Version__PageSize_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( string.Empty, version, 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsync( null, version, 1, 0, 1 ) );
+        }
+
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsStringsAsync_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( string.Empty, "", 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( null, "", 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsStringsAsync_PageSize_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( string.Empty, "", 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( null, "", 1, 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsStringsAsync_Version_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( string.Empty, version, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( null, version, 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsStringsAsync__PageSize_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( string.Empty, version, 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsStringsAsync( null, version, 1, 0, 1 ) );
+        }
+
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsJsonArraysAsync_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( string.Empty, "", 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( null, "", 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsJsonArraysAsync_PageSize_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( string.Empty, "", 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( null, "", 1, 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsJsonArraysAsync_Version_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( string.Empty, version, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( null, version, 0, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetPagesFromOffsetAsJsonArraysAsync__PageSize_Offset_NumPages_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( string.Empty, version, 1, 0, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetPagesFromOffsetAsJArraysAsync( null, version, 1, 0, 1 ) );
+        }
+
+
+        [Fact]
+        public async Task GetRowsAsync_NumRows_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( string.Empty, "", 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( null, "", 1 ) );
+        }
+
+        [Fact]
+        public async Task GetRowsAsync_Version_NumRows_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( string.Empty, version, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( null, version, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetRowsAsync_PageSize_NumRows_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( string.Empty, "", 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( null, "", 1, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetRowsAsync_Version_PageSize_NumRows_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( string.Empty, version, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsync( null, version, 1, 1 ) );
+        }
+
+
+        [Fact]
+        public async Task GetRowsAsStringsAsync_NumRows_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsStringsAsync( string.Empty, "", 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsStringsAsync( null, "", 1 ) );
+        }
+
+        [Fact]
+        public async Task GetRowsAsStringsAsync_Version_NumRows_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsStringsAsync( string.Empty, version, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsStringsAsync( null, version, 1 ) );
+        }
+
+        [Fact]
+        public async Task GetRowsAsJsonArraysAsync_NumRows_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsJArrayAsync( string.Empty, "", 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsJArrayAsync( null, "", 1 ) );
+        }
+
+        [Fact]
+        public async Task GetRowsAsJsonArraysAsync_Version_NumRows_ArgumentNullException()
+        {
+            proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsJArrayAsync( string.Empty, version, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsAsJArrayAsync( null, version, 1 ) );
         }
 
         //--
         [Fact]
-        public void GetRowsFromOffsetAsync_Offset_NumRows_ArgumentNullException()
+        public async Task GetRowsFromOffsetAsync_Offset_NumRows_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( string.Empty, "", 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( null, "", 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( string.Empty, "", 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( null, "", 1, 1 ) );
         }
 
         [Fact]
-        public void GetRowsFromOffsetAsync_PageSize_Offset_NumRows_ArgumentNullException()
+        public async Task GetRowsFromOffsetAsync_PageSize_Offset_NumRows_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( string.Empty, "", 1, 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( null, "", 1, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( string.Empty, "", 1, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( null, "", 1, 1, 1 ) );
         }
 
         [Fact]
-        public void GetRowsFromOffsetAsync_Version_Offset_NumRows_ArgumentNullException()
+        public async Task GetRowsFromOffsetAsync_Version_Offset_NumRows_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( string.Empty, version, 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( null, version, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( string.Empty, version, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( null, version, 1, 1 ) );
         }
 
         [Fact]
-        public void GetRowsFromOffsetAsync_Version_PageSize_Offset_NumRows_ArgumentNullException()
+        public async Task GetRowsFromOffsetAsync_Version_PageSize_Offset_NumRows_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( string.Empty, version, 1, 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( null, version, 1, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( string.Empty, version, 1, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsync( null, version, 1, 1, 1 ) );
         }
 
 
         [Fact]
-        public void GetRowsFromOffsetAsStringsAsync_Offset_NumRows_ArgumentNullException()
+        public async Task GetRowsFromOffsetAsStringsAsync_Offset_NumRows_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsStringsAsync( string.Empty, "", 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsStringsAsync( null, "", 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsStringsAsync( string.Empty, "", 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsStringsAsync( null, "", 1, 1 ) );
         }
 
         [Fact]
-        public void GetRowsFromOffsetAsStringsAsync_Version_Offset_NumRows_ArgumentNullException()
+        public async Task GetRowsFromOffsetAsStringsAsync_Version_Offset_NumRows_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsStringsAsync( string.Empty, version, 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsStringsAsync( null, version, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsStringsAsync( string.Empty, version, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsStringsAsync( null, version, 1, 1 ) );
         }
 
         [Fact]
-        public void GetRowsFromOffsetAsJsonArraysAsync_Offset_NumRows_ArgumentNullException()
+        public async Task GetRowsFromOffsetAsJsonArraysAsync_Offset_NumRows_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsJArrayAsync( string.Empty, "", 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsJArrayAsync( null, "", 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsJArrayAsync( string.Empty, "", 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsJArrayAsync( null, "", 1, 1 ) );
         }
 
         [Fact]
-        public void GetRowsFromOffsetAsJsonArraysAsync_Version_Offset_NumRows_ArgumentNullException()
+        public async Task GetRowsFromOffsetAsJsonArraysAsync_Version_Offset_NumRows_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithArrayWithOKStatus().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsJArrayAsync( string.Empty, version, 1, 1 ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsJArrayAsync( null, version, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsJArrayAsync( string.Empty, version, 1, 1 ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetRowsFromOffsetAsJArrayAsync( null, version, 1, 1 ) );
         }
 
         //--------------------
         [Fact]
-        public void GetByIdAsync_Id_ArgumentNullException()
+        public async Task GetByIdAsync_Id_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithOKSingleRecordWithAccessToken().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( string.Empty, guid ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( null, guid ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( resourceName, string.Empty ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( resourceName, null ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( string.Empty, guid ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( null, guid ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( resourceName, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( resourceName, null ) );
         }
 
         [Fact]
-        public void GetByIdAsync_Id_Version_ArgumentNullException()
+        public async Task GetByIdAsync_Id_Version_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithOKSingleRecordWithAccessToken().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( string.Empty, guid, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( null, guid, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( resourceName, string.Empty, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( resourceName, null, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( string.Empty, guid, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( null, guid, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( resourceName, string.Empty, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetByIdAsync( resourceName, null, version ) );
         }
 
         [Fact]
-        public void GetAsStringByIdAsync_Id_ArgumentNullException()
+        public async Task GetAsStringByIdAsync_Id_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithOKSingleRecordWithAccessToken().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( string.Empty, guid ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( null, guid ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( resourceName, string.Empty ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( resourceName, null ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( string.Empty, guid ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( null, guid ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( resourceName, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( resourceName, null ) );
         }
 
         [Fact]
-        public void GetAsStringByIdAsync_Id_Version_ArgumentNullException()
+        public async Task GetAsStringByIdAsync_Id_Version_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithOKSingleRecordWithAccessToken().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( string.Empty, guid, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( null, guid, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( resourceName, string.Empty, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( resourceName, null, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( string.Empty, guid, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( null, guid, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( resourceName, string.Empty, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsStringByIdAsync( resourceName, null, version ) );
         }
 
         [Fact]
-        public void GetAsJObjectByIdAsync_Id_ArgumentNullException()
+        public async Task GetAsJObjectByIdAsync_Id_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithOKSingleRecordWithAccessToken().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( string.Empty, guid ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( null, guid ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( resourceName, string.Empty ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( resourceName, null ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( string.Empty, guid ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( null, guid ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( resourceName, string.Empty ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( resourceName, null ) );
         }
 
         [Fact]
-        public void GetAsJObjectByIdAsync_Id_Version_ArgumentNullException()
+        public async Task GetAsJObjectByIdAsync_Id_Version_ArgumentNullException()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockClientWithOKSingleRecordWithAccessToken().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( string.Empty, guid, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( null, guid, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( resourceName, string.Empty, version ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( resourceName, null, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( string.Empty, guid, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( null, guid, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( resourceName, string.Empty, version ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.GetAsJObjectByIdAsync( resourceName, null, version ) );
         }
 
         #endregion
@@ -1681,9 +1681,11 @@ namespace Ellucian.Ethos.Integration.Test
             string resourceName = "resource-062314";
             string resourceId = "resourceId-052412";
             JObject requestBodyObject = JObject.Parse(
-                @"{
-                    a: 'b'
-                }"
+"""
+{
+  "a": "b"
+}
+"""
             );
             EthosResponse response = await proxyClient.PutAsync( resourceName, resourceId, requestBodyObject );
             CheckResponse( response );
@@ -1702,17 +1704,17 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void PutTest_Exceptions()
+        public async Task PutTest_Exceptions()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosProxyClientWithOKForPaging().httpClient );
             JObject nullObject = null;
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.PutAsync( "resourceName", "resourceId", nullObject ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PutAsync( "resourceName", "resourceId", nullObject ) );
             string nullString = null;
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.PutAsync( "resourceName", "resourceId", nullString ) );
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.PutAsync( "resourceName", "", "requestBody" ) );
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.PutAsync( "", "resourceId", "requestBody" ) );
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.PutAsync( nullString, "resourceId", "requestBody" ) );
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.PutAsync( "resourceName", null, "requestBody" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PutAsync( "resourceName", "resourceId", nullString ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PutAsync( "resourceName", "", "requestBody" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PutAsync( "", "resourceId", "requestBody" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PutAsync( nullString, "resourceId", "requestBody" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PutAsync( "resourceName", null, "requestBody" ) );
         }
 
         #endregion
@@ -1720,11 +1722,11 @@ namespace Ellucian.Ethos.Integration.Test
         #region POSTS
 
         [Fact]
-        public void PostAsync_Exceptions()
+        public async Task PostAsync_Exceptions()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosProxyClientWithOKForPaging().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PostAsync( "", "", "" ) );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PostAsync( "resourceName", "", " " ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PostAsync( "", "", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PostAsync( "resourceName", "", " " ) );
         }
 
         [Fact]
@@ -1739,10 +1741,10 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void PostAsync_With_Null_JObject_Exceptions()
+        public async Task PostAsync_With_Null_JObject_Exceptions()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosProxyClientWithOKForPaging().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PostAsync( "resourceName", "", requestBodyNode: null ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.PostAsync( "resourceName", "", requestBodyNode: null ) );
         }
 
         [Fact]
@@ -1774,13 +1776,13 @@ namespace Ellucian.Ethos.Integration.Test
         }
 
         [Fact]
-        public void DeleteTest_InvalidInputTest()
+        public async Task DeleteTest_InvalidInputTest()
         {
             proxyClient = new EthosProxyClient( SampleTestDataRepository.API_KEY, SampleTestDataRepository.GetMockSequenceForEthosProxyClientWithOKForPaging().httpClient );
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.DeleteAsync( null, "id" ) );
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.DeleteAsync( "", "id" ) );
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.DeleteAsync( "resourceName", null ) );
-            _ = Assert.ThrowsAsync<ArgumentException>( async () => await proxyClient.DeleteAsync( "resourceName", "" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.DeleteAsync( null, "id" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.DeleteAsync( "", "id" ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.DeleteAsync( "resourceName", null ) );
+            _ = await Assert.ThrowsAsync<ArgumentNullException>( async () => await proxyClient.DeleteAsync( "resourceName", "" ) );
         }
         #endregion
 
