@@ -5,10 +5,8 @@
  */
 
 using Ellucian.Ethos.Integration.Client.Extensions;
-
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,7 +99,8 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <summary>
         /// Response header for the application name of the application used in Ethos Integration.
         /// </summary>
-        public const string HDR_HEDTECH_ETHOS_INTEGRATION_APPLICATION_NAME = "hedtech-ethos-integration-application-name";
+        public const string HDR_HEDTECH_ETHOS_INTEGRATION_APPLICATION_NAME =
+            "hedtech-ethos-integration-application-name";
 
         /// <summary>
         /// Date format.
@@ -120,9 +119,8 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="apiKey">A valid API key from Ethos Integration. This is required to be a valid 36 character GUID string.
         /// If it is null, empty, <see cref="ArgumentNullException"/> will be thrown or not in a valid GUID format, then a <see cref="FormatException"/> will be thrown.</param>
         /// <param name="client">A HttpClient. If it is null/empty, then an <see cref="ArgumentNullException"/> will be thrown.</param>
-        public EthosProxyClient( string apiKey, HttpClient client ) : base( apiKey, client )
+        public EthosProxyClient(string apiKey, HttpClient client) : base(apiKey, client)
         {
-
         }
 
         #region POST
@@ -135,9 +133,9 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="requestBody">The body of the request to POST for the given resource.</param>
         /// <returns>An EthosResponse containing the instance of the resource that was added by this POST operation.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
-        public async Task<EthosResponse> PostAsync( string resourceName, string requestBody )
+        public async Task<EthosResponse> PostAsync(string resourceName, string requestBody)
         {
-            return await PostAsync( resourceName, DEFAULT_VERSION, requestBody );
+            return await PostAsync(resourceName, DEFAULT_VERSION, requestBody);
         }
 
         /// <summary>
@@ -150,21 +148,26 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <returns>An EthosResponse containing the instance of the resource that was added by this POST operation.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBody"/> is passed as null or empty or white space.</exception>
-        public async Task<EthosResponse> PostAsync( string resourceName, string version, string requestBody )
+        public async Task<EthosResponse> PostAsync(string resourceName, string version, string requestBody)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
-            {
-                throw new ArgumentNullException( "Error: Cannot submit a POST request due to a null or blank resourceName parameter." );
-            }
-            if ( string.IsNullOrWhiteSpace( requestBody ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 throw new ArgumentNullException(
-                    $"Error: Cannot submit a POST request for resourceName { resourceName } due to a null or blank requestBody parameter."
+                    nameof(resourceName),
+                    "Error: Cannot submit a POST request due to a null or blank resourceName parameter.");
+            }
+
+            if (string.IsNullOrWhiteSpace(requestBody))
+            {
+                throw new ArgumentNullException(
+                    nameof(requestBody),
+                    $"Error: Cannot submit a POST request for resourceName {resourceName} due to a null or blank requestBody parameter."
                 );
             }
-            var headers = BuildHeadersMap( version );
-            string url = EthosIntegrationUrls.Api( Region, resourceName, null );
-            return await base.PostAsync( headers, url, requestBody );
+
+            var headers = BuildHeadersMap(version);
+            string url = EthosIntegrationUrls.Api(Region, resourceName, null);
+            return await base.PostAsync(headers, url, requestBody);
         }
 
         /// <summary>
@@ -175,9 +178,9 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="requestBodyNode">The body of the request to POST for the given resource as a JsonNode.</param> 
         /// <returns>An EthosResponse containing the instance of the resource that was added by this POST operation.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBodyNode"/> is passed as null.</exception>
-        public async Task<EthosResponse> PostAsync( string resourceName, JObject requestBodyNode )
+        public async Task<EthosResponse> PostAsync(string resourceName, JObject requestBodyNode)
         {
-            return await PostAsync( resourceName, DEFAULT_VERSION, requestBodyNode );
+            return await PostAsync(resourceName, DEFAULT_VERSION, requestBodyNode);
         }
 
         /// <summary>
@@ -190,14 +193,14 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <returns>An EthosResponse containing the instance of the resource that was added by this POST operation.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBodyNode"/> is passed as null.</exception>
-        public async Task<EthosResponse> PostAsync( string resourceName, string version, JObject requestBodyNode )
+        public async Task<EthosResponse> PostAsync(string resourceName, string version, JObject requestBodyNode)
         {
-            ArgumentNullException.ThrowIfNull( requestBodyNode, $"Error: Cannot submit a POST request for resource {resourceName} due to a null or blank {nameof( requestBodyNode )} parameter." );           
+            ArgumentNullException.ThrowIfNull(requestBodyNode,
+                $"Error: Cannot submit a POST request for resource {resourceName} due to a null or blank {nameof(requestBodyNode)} parameter.");
 
-            return await PostAsync( resourceName, version, requestBodyNode.ToString() );
+            return await PostAsync(resourceName, version, requestBodyNode.ToString());
         }
 
-        
         #endregion
 
         #region PUT
@@ -213,9 +216,9 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceId"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBody"/> is passed as null or empty or white space.</exception>
-        public async Task<EthosResponse> PutAsync( string resourceName, string resourceId, string requestBody )
+        public async Task<EthosResponse> PutAsync(string resourceName, string resourceId, string requestBody)
         {
-            return await PutAsync( resourceName, resourceId, DEFAULT_VERSION, requestBody );
+            return await PutAsync(resourceName, resourceId, DEFAULT_VERSION, requestBody);
         }
 
         /// <summary>
@@ -230,23 +233,28 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceId"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBody"/> is passed as null or empty or white space.</exception>
-        public async Task<EthosResponse> PutAsync( string resourceName, string resourceId, string version, string requestBody )
+        public async Task<EthosResponse> PutAsync(string resourceName, string resourceId, string version,
+            string requestBody)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
-            {
-                throw new ArgumentNullException( "Error: Cannot submit a PUT request due to a null or blank resourceName parameter." );
-            }
-
-            if ( string.IsNullOrWhiteSpace( requestBody ) )
-            {
+            if (string.IsNullOrWhiteSpace(resourceName))
                 throw new ArgumentNullException(
-                    $"Error: Cannot submit a PUT request for resourceName { resourceName } due to a null or blank requestBody parameter."
-                );
-            }
+                    nameof(resourceName),
+                    "Error: Cannot submit a PUT request due to a null or blank resourceName parameter.");
 
-            var headers = BuildHeadersMap( version );
-            string url = EthosIntegrationUrls.Api( Region, resourceName, resourceId );
-            return await base.PutAsync( headers, url, requestBody );
+            if (string.IsNullOrWhiteSpace(resourceId))
+                throw new ArgumentNullException(
+                    nameof(resourceId),
+                    "Error: Cannot submit a PUT request due to a null or blank resourceId parameter.");
+
+            if (string.IsNullOrWhiteSpace(requestBody))
+                throw new ArgumentNullException(
+                    nameof(requestBody),
+                    $"Error: Cannot submit a PUT request for resourceName {resourceName} due to a null or blank requestBody parameter."
+                );
+
+            var headers = BuildHeadersMap(version);
+            string url = EthosIntegrationUrls.Api(Region, resourceName, resourceId);
+            return await base.PutAsync(headers, url, requestBody);
         }
 
         /// <summary>
@@ -260,9 +268,9 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceId"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBodyNode"/> is passed as null.</exception>
-        public async Task<EthosResponse> PutAsync( string resourceName, string resourceId, JObject requestBodyNode )
+        public async Task<EthosResponse> PutAsync(string resourceName, string resourceId, JObject requestBodyNode)
         {
-            return await PutAsync( resourceName, resourceId, DEFAULT_VERSION, requestBodyNode.ToString() );
+            return await PutAsync(resourceName, resourceId, DEFAULT_VERSION, requestBodyNode?.ToString());
         }
 
         /// <summary>
@@ -277,20 +285,23 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceId"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBodyNode"/> is passed as null.</exception>
-        public async Task<EthosResponse> PutAsync( string resourceName, string resourceId, string version, JObject requestBodyNode )
+        public async Task<EthosResponse> PutAsync(string resourceName, string resourceId, string version,
+            JObject requestBodyNode)
         {
-            if ( requestBodyNode == null )
+            if (requestBodyNode == null)
             {
                 throw new ArgumentNullException(
-                    $"Error: Cannot submit a PUT request for resourceName { resourceName } due to a null or blank requestBody parameter."
+                    $"Error: Cannot submit a PUT request for resourceName {resourceName} due to a null or blank requestBody parameter."
                 );
             }
-            return await PutAsync( resourceName, resourceId, version, requestBodyNode );
+
+            return await PutAsync(resourceName, resourceId, version, requestBodyNode);
         }
 
         #endregion
 
         #region DELETE
+
         /// <summary>
         /// Deletes an instance of the given resource by the given id.
         /// </summary>
@@ -298,21 +309,24 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="id">The unique ID (GUID) of the resource to delete.</param>
         /// <exception cref="ArgumentNullException">When <paramref name="id"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null.</exception>
-        public async Task DeleteAsync( string resourceName, string id )
+        public async Task DeleteAsync(string resourceName, string id)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
-            {
-                throw new ArgumentNullException( "Error: Cannot submit a DELETE request due to a null or blank resourceName param." );
-            }
-            if ( string.IsNullOrWhiteSpace( id ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 throw new ArgumentNullException(
-                    $"Error: Cannot submit a DELETE request for resourceName { resourceName } due to a null or blank requestBody parameter."
+                    "Error: Cannot submit a DELETE request due to a null or blank resourceName param.");
+            }
+
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentNullException(
+                    $"Error: Cannot submit a DELETE request for resourceName {resourceName} due to a null or blank requestBody parameter."
                 );
             }
-            var headers = BuildHeadersMap( null );
-            string url = EthosIntegrationUrls.Api( Region, resourceName, id );
-            await base.DeleteAsync( headers, url );
+
+            var headers = BuildHeadersMap(null);
+            string url = EthosIntegrationUrls.Api(Region, resourceName, id);
+            await base.DeleteAsync(headers, url);
         }
 
         #endregion
@@ -329,7 +343,8 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <returns>The data for a given resource in an <see cref="EthosResponse" /> according to the requested version of the resource.
         /// The <see cref="EthosResponse" /> contains the content body of the resource data as well as headers and
         /// the Http status code.</returns>
-        public async Task<EthosResponse> GetByIdAsync<T>(string resourceName, string id, string version = "") where T : class
+        public async Task<EthosResponse> GetByIdAsync<T>(string resourceName, string id, string version = "")
+            where T : class
         {
             EthosResponse ethosResponse = await GetByIdAsync(resourceName, id, version);
             return ConvertEthosResponseContentToType<T>(ethosResponse);
@@ -346,10 +361,11 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pageSize">The number of rows to include in the returned page (EthosResponse).</param>
         /// <returns>A strongly typed object.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or as a white space.</exception>
-        public async Task<EthosResponse> GetAsync<T>( string resourceName, string version = "", int offset = 0, int pageSize = 0 ) where T : class
+        public async Task<EthosResponse> GetAsync<T>(string resourceName, string version = "", int offset = 0,
+            int pageSize = 0) where T : class
         {
-            EthosResponse response = await GetAsync( resourceName, version, offset, pageSize );
-            return ConvertEthosResponseContentToType<T>( response );
+            EthosResponse response = await GetAsync(resourceName, version, offset, pageSize);
+            return ConvertEthosResponseContentToType<T>(response);
         }
 
         /// <summary>
@@ -364,10 +380,11 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>Returns collection of <see cref="EthosResponse"/>s with each including strongly typed obect collection.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetAllPagesAsync<T>( string resourceName, string version = "", int pageSize = 0 ) where T : class
+        public async Task<IEnumerable<EthosResponse>> GetAllPagesAsync<T>(string resourceName, string version = "",
+            int pageSize = 0) where T : class
         {
-            var ethosResponseList = await GetAllPagesAsync( resourceName, version, pageSize );
-            return ConvertEthosResponseContentListToType<T>( ethosResponseList );
+            var ethosResponseList = await GetAllPagesAsync(resourceName, version, pageSize);
+            return ConvertEthosResponseContentListToType<T>(ethosResponseList);
         }
 
         /// <summary>
@@ -380,14 +397,15 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <param name="numPages">The number of pages of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetPagesAsync<T>( string resourceName, string version = "", int pageSize = 0, int numPages = 0 ) where T : class
+        public async Task<IEnumerable<EthosResponse>> GetPagesAsync<T>(string resourceName, string version = "",
+            int pageSize = 0, int numPages = 0) where T : class
         {
-            var ethosResponseList = await GetPagesAsync( resourceName, version, pageSize, numPages );
-            ethosResponseList.ToList().ForEach( ethosResponse =>
+            var ethosResponseList = await GetPagesAsync(resourceName, version, pageSize, numPages);
+            ethosResponseList.ToList().ForEach(ethosResponse =>
             {
                 ethosResponse.Dto = ethosResponse.Deserialize<T>();
                 ethosResponse.Content = string.Empty;
-            } );
+            });
             return ethosResponseList;
         }
 
@@ -405,10 +423,11 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetAllPagesFromOffsetAsync<T>( string resourceName, string version = "", int offset = 0, int pageSize = 0 ) where T : class
+        public async Task<IEnumerable<EthosResponse>> GetAllPagesFromOffsetAsync<T>(string resourceName,
+            string version = "", int offset = 0, int pageSize = 0) where T : class
         {
-            var ethosResponseList = await GetAllPagesFromOffsetAsync( resourceName, version, offset, pageSize );
-            return ConvertEthosResponseContentListToType<T>( ethosResponseList );
+            var ethosResponseList = await GetAllPagesFromOffsetAsync(resourceName, version, offset, pageSize);
+            return ConvertEthosResponseContentListToType<T>(ethosResponseList);
         }
 
         /// <summary>
@@ -423,10 +442,11 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="numPages">The number of pages of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetPagesFromOffsetAsync<T>( string resourceName, string version = "", int pageSize = 0, int offset = 0, int numPages = 0 ) where T : class
+        public async Task<IEnumerable<EthosResponse>> GetPagesFromOffsetAsync<T>(string resourceName,
+            string version = "", int pageSize = 0, int offset = 0, int numPages = 0) where T : class
         {
-            var ethosResponseList = await GetPagesFromOffsetAsync( resourceName, version, pageSize, offset, numPages );
-            return ConvertEthosResponseContentListToType<T>( ethosResponseList );
+            var ethosResponseList = await GetPagesFromOffsetAsync(resourceName, version, pageSize, offset, numPages);
+            return ConvertEthosResponseContentListToType<T>(ethosResponseList);
         }
 
         /// <summary>
@@ -439,10 +459,11 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <param name="numRows">The number of rows of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetRowsAsync<T>( string resourceName, string version = "", int pageSize = 0, int numRows = 0 ) where T : class
+        public async Task<IEnumerable<EthosResponse>> GetRowsAsync<T>(string resourceName, string version = "",
+            int pageSize = 0, int numRows = 0) where T : class
         {
-            var ethosResponseList = await GetRowsAsync( resourceName, version, pageSize, numRows );
-            return ConvertEthosResponseContentListToType<T>( ethosResponseList );
+            var ethosResponseList = await GetRowsAsync(resourceName, version, pageSize, numRows);
+            return ConvertEthosResponseContentListToType<T>(ethosResponseList);
         }
 
         /// <summary>
@@ -457,10 +478,11 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="numRows">The number of rows of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetRowsFromOffsetAsync<T>( string resourceName, string version = "", int pageSize = 0, int offset = 0, int numRows = 0 ) where T : class
+        public async Task<IEnumerable<EthosResponse>> GetRowsFromOffsetAsync<T>(string resourceName,
+            string version = "", int pageSize = 0, int offset = 0, int numRows = 0) where T : class
         {
-            var ethosResponseList = await GetRowsFromOffsetAsync( resourceName, version, pageSize, offset, numRows );
-            return ConvertEthosResponseContentListToType<T>( ethosResponseList );
+            var ethosResponseList = await GetRowsFromOffsetAsync(resourceName, version, pageSize, offset, numRows);
+            return ConvertEthosResponseContentListToType<T>(ethosResponseList);
         }
 
         /// <summary>
@@ -474,15 +496,18 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <returns>An EthosResponse containing the instance of the resource that was added by this PUT operation including type specified by the caller.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBody"/> is passed as null or empty or white space.</exception>
-        public async Task<EthosResponse> PutAsync<T>( string resourceName, T requestBody, string resourceId = "", string version = "" ) where T : class
+        public async Task<EthosResponse> PutAsync<T>(string resourceName, T requestBody, string resourceId = "",
+            string version = "") where T : class
         {
             var jsonSerSettings = new JsonSerializerSettings()
             {
                 DateFormatString = DATE_FORMAT
             };
-            var reqBody = requestBody is not null ? JsonConvert.SerializeObject( requestBody, jsonSerSettings ) :
-                                                     throw new ArgumentNullException( $"Error: Cannot submit a PUT request for a null or blank requestBody parameter." );
-            var response = await PutAsync( resourceName, resourceId, version, reqBody );
+            var reqBody = requestBody is not null
+                ? JsonConvert.SerializeObject(requestBody, jsonSerSettings)
+                : throw new ArgumentNullException(
+                    $"Error: Cannot submit a PUT request for a null or blank requestBody parameter.");
+            var response = await PutAsync(resourceName, resourceId, version, reqBody);
             return response;
         }
 
@@ -496,15 +521,18 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <returns>An EthosResponse containing the instance of the resource that was added by this POST operation including type specified by the caller.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="resourceName"/> is passed as null or empty or white space.</exception>
         /// <exception cref="ArgumentNullException">When <paramref name="requestBody"/> is passed as null or empty or white space.</exception>
-        public async Task<EthosResponse> PostAsync<T>( string resourceName, T requestBody, string version = "" ) where T : class
+        public async Task<EthosResponse> PostAsync<T>(string resourceName, T requestBody, string version = "")
+            where T : class
         {
             var jsonSerSettings = new JsonSerializerSettings()
             {
                 DateFormatString = DATE_FORMAT
             };
-            var reqBody = requestBody is not null ? JsonConvert.SerializeObject( requestBody, jsonSerSettings ) :
-                                                    throw new ArgumentNullException( $"Error: Cannot submit a POST request for a null or blank requestBody parameter." );
-            var response = await PostAsync( resourceName, version, reqBody );
+            var reqBody = requestBody is not null
+                ? JsonConvert.SerializeObject(requestBody, jsonSerSettings)
+                : throw new ArgumentNullException(
+                    $"Error: Cannot submit a POST request for a null or blank requestBody parameter.");
+            var response = await PostAsync(resourceName, version, reqBody);
             return response;
         }
 
@@ -514,7 +542,7 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <typeparam name="T">Type to be included in the <see cref="EthosResponse"/> returned specified by caller.</typeparam>
         /// <param name="response"></param>
         /// <returns>Ethos response with content converted to type specified by 'T' and stored in Dto property and setting Content property to empty string.</returns>
-        internal EthosResponse ConvertEthosResponseContentToType<T>( EthosResponse response ) where T : class
+        internal EthosResponse ConvertEthosResponseContentToType<T>(EthosResponse response) where T : class
         {
             response.Dto = response.Deserialize<T>();
             response.Content = string.Empty;
@@ -527,19 +555,20 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <typeparam name="T">Type to be included in the <see cref="EthosResponse"/> returned specified by caller.</typeparam>
         /// <param name="ethosResponseList"></param>
         /// <returns>Collection of Ethos responses with content converted to type specified by 'T' and stored in Dto property and setting Content property to empty string.</returns>
-        internal IEnumerable<EthosResponse> ConvertEthosResponseContentListToType<T>( IEnumerable<EthosResponse> ethosResponseList ) where T : class
+        internal IEnumerable<EthosResponse> ConvertEthosResponseContentListToType<T>(
+            IEnumerable<EthosResponse> ethosResponseList) where T : class
         {
-            ethosResponseList.ToList().ForEach( ethosResponse =>
+            ethosResponseList.ToList().ForEach(ethosResponse =>
             {
                 ethosResponse.Dto = ethosResponse.Deserialize<T>();
                 ethosResponse.Content = string.Empty;
-            } );
+            });
             return ethosResponseList;
         }
 
         #endregion
 
-        #region GET        
+        #region GET
 
         /// <summary>
         /// Gets a page of data for the given resource by name.
@@ -547,14 +576,17 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="resourceName">The name of the resource to get data for.</param>
         /// <returns>An <see cref="EthosResponse" /> containing an initial page (EthosResponse content) of resource data according
         /// to the requested version of the resource.</returns>
-        public new async Task<EthosResponse> GetAsync( string resourceName )
+        public new async Task<EthosResponse> GetAsync(string resourceName)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
             var version = DEFAULT_VERSION;
-            Dictionary<string, string> headers = BuildHeadersMap( version );
-            string url = $"{ EthosIntegrationUrls.Api( Region, resourceName ) }";
-            EthosResponse response = await GetAsync( headers, url );
+            Dictionary<string, string> headers = BuildHeadersMap(version);
+            string url = $"{EthosIntegrationUrls.Api(Region, resourceName)}";
+            EthosResponse response = await GetAsync(headers, url);
             return response;
         }
 
@@ -565,13 +597,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <returns>An <see cref="EthosResponse" /> containing an initial page (EthosResponse content) of resource data according
         /// to the requested version of the resource.</returns>
-        public async Task<EthosResponse> GetAsync( string resourceName, string version = "" )
+        public async Task<EthosResponse> GetAsync(string resourceName, string version = "")
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            Dictionary<string, string> headers = BuildHeadersMap( version );
-            string url = $"{ EthosIntegrationUrls.Api( Region, resourceName ) }";
-            EthosResponse response = await GetAsync( headers, url );
+            Dictionary<string, string> headers = BuildHeadersMap(version);
+            string url = $"{EthosIntegrationUrls.Api(Region, resourceName)}";
+            EthosResponse response = await GetAsync(headers, url);
             return response;
         }
 
@@ -581,12 +616,15 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="resourceName">The name of the resource to get data for.</param>
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<string> GetAsStringAsync( string resourceName, string version = "" )
+        public async Task<string> GetAsStringAsync(string resourceName, string version = "")
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            EthosResponse ethosResponse = await GetAsync( resourceName, version );
-            return ethosResponseConverter.ToContentString( ethosResponse );
+            EthosResponse ethosResponse = await GetAsync(resourceName, version);
+            return ethosResponseConverter.ToContentString(ethosResponse);
         }
 
         /// <summary>
@@ -595,12 +633,15 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="resourceName">The name of the resource to get data for.</param>
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <returns>A <see cref="JArray"/> containing an initial page (EthosResponse content) of resource data according </returns>
-        public async Task<JArray> GetAsJArrayAsync( string resourceName, string version = "" )
+        public async Task<JArray> GetAsJArrayAsync(string resourceName, string version = "")
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            EthosResponse ethosResponse = await GetAsync( resourceName, version );
-            return ethosResponseConverter.ToJArray( ethosResponse );
+            EthosResponse ethosResponse = await GetAsync(resourceName, version);
+            return ethosResponseConverter.ToJArray(ethosResponse);
         }
 
         /// <summary>
@@ -613,13 +654,17 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="pageSize">The number of rows to include in the returned page (EthosResponse).</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<EthosResponse> GetAsync( string resourceName, string version = "", int offset = 0, int pageSize = 0 )
+        public async Task<EthosResponse> GetAsync(string resourceName, string version = "", int offset = 0,
+            int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            Dictionary<string, string> headers = BuildHeadersMap( version );
-            string url = $"{ EthosIntegrationUrls.ApiPaging( Region, resourceName, offset, pageSize ) }";
-            EthosResponse response = await GetAsync( headers, url );
+            Dictionary<string, string> headers = BuildHeadersMap(version);
+            string url = $"{EthosIntegrationUrls.ApiPaging(Region, resourceName, offset, pageSize)}";
+            EthosResponse response = await GetAsync(headers, url);
             return response;
         }
 
@@ -633,10 +678,11 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="pageSize">The number of rows to include in the returned page (EthosResponse).</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<string> GetAsStringAsync( string resourceName, string version = "", int offset = 0, int pageSize = 0 )
+        public async Task<string> GetAsStringAsync(string resourceName, string version = "", int offset = 0,
+            int pageSize = 0)
         {
-            EthosResponse response = await GetAsync( resourceName, version, offset, pageSize );
-            return ethosResponseConverter.ToContentString( response );
+            EthosResponse response = await GetAsync(resourceName, version, offset, pageSize);
+            return ethosResponseConverter.ToContentString(response);
         }
 
         /// <summary>
@@ -649,13 +695,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="pageSize">The number of rows to include in the returned page (EthosResponse).</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<JArray> GetAsJArrayAsync( string resourceName, string version = "", int offset = 0, int pageSize = 0 )
+        public async Task<JArray> GetAsJArrayAsync(string resourceName, string version = "", int offset = 0,
+            int pageSize = 0)
         {
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
-
-            EthosResponse response = await GetAsync( resourceName, version, offset, pageSize );
-            return ethosResponseConverter.ToJArray( response );
+            EthosResponse response = await GetAsync(resourceName, version, offset, pageSize);
+            return ethosResponseConverter.ToJArray(response);
         }
 
         /// <summary>
@@ -665,11 +714,14 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<EthosResponse> GetFromOffsetAsync( string resourceName, string version = "", int offset = 0 )
+        public async Task<EthosResponse> GetFromOffsetAsync(string resourceName, string version = "", int offset = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            return await GetAsync( resourceName, version, offset, DEFAULT_PAGE_SIZE );
+            return await GetAsync(resourceName, version, offset, DEFAULT_PAGE_SIZE);
         }
 
         /// <summary>
@@ -679,12 +731,15 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<string> GetFromOffsetAsStringAsync( string resourceName, string version = "", int offset = 0 )
+        public async Task<string> GetFromOffsetAsStringAsync(string resourceName, string version = "", int offset = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            EthosResponse response = await GetAsync( resourceName, version, offset, DEFAULT_PAGE_SIZE );
-            return ethosResponseConverter.ToContentString( response );
+            EthosResponse response = await GetAsync(resourceName, version, offset, DEFAULT_PAGE_SIZE);
+            return ethosResponseConverter.ToContentString(response);
         }
 
         /// <summary>
@@ -694,12 +749,15 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<JArray> GetFromOffsetAsJArrayAsync( string resourceName, string version = "", int offset = 0 )
+        public async Task<JArray> GetFromOffsetAsJArrayAsync(string resourceName, string version = "", int offset = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            EthosResponse response = await GetAsync( resourceName, version, offset, DEFAULT_PAGE_SIZE );
-            return ethosResponseConverter.ToJArray( response );
+            EthosResponse response = await GetAsync(resourceName, version, offset, DEFAULT_PAGE_SIZE);
+            return ethosResponseConverter.ToJArray(response);
         }
 
         /// <summary>
@@ -709,11 +767,15 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="pageSize">The number of rows to include in the returned page (EthosResponse).</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<EthosResponse> GetWithPageSizeAsync( string resourceName, string version = "", int pageSize = 0 )
+        public async Task<EthosResponse> GetWithPageSizeAsync(string resourceName, string version = "",
+            int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            return await GetAsync( resourceName, version, 0, pageSize );
+            return await GetAsync(resourceName, version, 0, pageSize);
         }
 
         /// <summary>
@@ -723,12 +785,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="pageSize">The number of rows to include in the returned page (EthosResponse).</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<string> GetWithPageSizeAsStringAsync( string resourceName, string version = "", int pageSize = 0 )
+        public async Task<string> GetWithPageSizeAsStringAsync(string resourceName, string version = "",
+            int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            EthosResponse response = await GetAsync( resourceName, version, 0, pageSize );
-            return ethosResponseConverter.ToContentString( response );
+            EthosResponse response = await GetAsync(resourceName, version, 0, pageSize);
+            return ethosResponseConverter.ToContentString(response);
         }
 
         /// <summary>
@@ -738,16 +804,21 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="pageSize">The number of rows to include in the returned page (EthosResponse).</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<JArray> GetWithPageSizeAsJArrayAsync( string resourceName, string version = "", int pageSize = 0 )
+        public async Task<JArray> GetWithPageSizeAsJArrayAsync(string resourceName, string version = "",
+            int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            EthosResponse response = await GetAsync( resourceName, version, 0, pageSize );
-            return ethosResponseConverter.ToJArray( response );
+            EthosResponse response = await GetAsync(resourceName, version, 0, pageSize);
+            return ethosResponseConverter.ToJArray(response);
         }
+
         #endregion
 
-        #region GET All Pages 
+        #region GET All Pages
 
         /// <summary>
         /// Gets all pages for the given resource and version. Uses the default page size of the response body content length.
@@ -758,11 +829,14 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// </summary>
         /// <param name="resourceName">Name of the resource</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetAllPagesAsync( string resourceName )
+        public async Task<IEnumerable<EthosResponse>> GetAllPagesAsync(string resourceName)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            return await GetAllPagesAsync( resourceName, DEFAULT_VERSION, DEFAULT_PAGE_SIZE );
+            return await GetAllPagesAsync(resourceName, DEFAULT_VERSION, DEFAULT_PAGE_SIZE);
         }
 
         /// <summary>
@@ -775,11 +849,14 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="resourceName">Name of the resource</param>
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetAllPagesAsync( string resourceName, string version = "" )
+        public async Task<IEnumerable<EthosResponse>> GetAllPagesAsync(string resourceName, string version = "")
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            return await GetAllPagesAsync( resourceName, version, DEFAULT_PAGE_SIZE );
+            return await GetAllPagesAsync(resourceName, version, DEFAULT_PAGE_SIZE);
         }
 
         /// <summary>
@@ -793,27 +870,31 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetAllPagesAsync( string resourceName, string version = "", int pageSize = 0 )
+        public async Task<IEnumerable<EthosResponse>> GetAllPagesAsync(string resourceName, string version = "",
+            int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
 
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) return ethosResponseList;
+            if (string.IsNullOrWhiteSpace(resourceName)) return ethosResponseList;
 
-            Pager pager = Pager.Build( pg =>
+            Pager pager = Pager.Build(pg =>
             {
                 pg
-                .ForResource( resourceName )
-                .ForVersion( version )
-                .WithPageSize( pageSize );
-            } );
+                    .ForResource(resourceName)
+                    .ForVersion(version)
+                    .WithPageSize(pageSize);
+            });
 
-            pager = await PrepareForPagingAsync( pager );
-            pager = ShouldDoPaging( pager, false );
+            pager = await PrepareForPagingAsync(pager);
+            pager = ShouldDoPaging(pager, false);
 
             pager.HowToPage = Pager.PagingType.PageAllPages;
-            ethosResponseList = await HandlePagingAsync( pager );
+            ethosResponseList = await HandlePagingAsync(pager);
             return ethosResponseList;
         }
 
@@ -828,12 +909,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<string>> GetAllPagesAsStringsAsync( string resourceName, string version = "", int pageSize = 0 )
+        public async Task<IEnumerable<string>> GetAllPagesAsStringsAsync(string resourceName, string version = "",
+            int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetAllPagesAsync( resourceName, version, pageSize );
-            return ethosResponseConverter.ToPagedStringList( ethosResponseList );
+            var ethosResponseList = await GetAllPagesAsync(resourceName, version, pageSize);
+            return ethosResponseConverter.ToPagedStringList(ethosResponseList);
         }
 
         /// <summary>
@@ -847,12 +932,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<JArray>> GetAllPagesAsJArraysAsync( string resourceName, string version = "", int pageSize = 0 )
+        public async Task<IEnumerable<JArray>> GetAllPagesAsJArraysAsync(string resourceName, string version = "",
+            int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetAllPagesAsync( resourceName, version, pageSize );
-            return ethosResponseConverter.ToJArrayList( ethosResponseList );
+            var ethosResponseList = await GetAllPagesAsync(resourceName, version, pageSize);
+            return ethosResponseConverter.ToJArrayList(ethosResponseList);
         }
 
         #endregion
@@ -872,38 +961,42 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetAllPagesFromOffsetAsync( string resourceName, string version = "", int offset = 0, int pageSize = 0 )
+        public async Task<IEnumerable<EthosResponse>> GetAllPagesFromOffsetAsync(string resourceName,
+            string version = "", int offset = 0, int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 return ethosResponseList;
             }
 
-            if ( offset < 1 )
+            if (offset < 1)
             {
                 // Just get all pages if offset is < 1.
-                return await GetAllPagesAsync( resourceName, version, pageSize );
+                return await GetAllPagesAsync(resourceName, version, pageSize);
             }
 
-            Pager pager = Pager.Build( p =>
+            Pager pager = Pager.Build(p =>
             {
                 p
-                .ForResource( resourceName )
-                .ForVersion( version )
-                .WithPageSize( pageSize )
-                .FromOffSet( offset );
-            } );
+                    .ForResource(resourceName)
+                    .ForVersion(version)
+                    .WithPageSize(pageSize)
+                    .FromOffSet(offset);
+            });
 
-            pager = await PrepareForPagingAsync( pager );
+            pager = await PrepareForPagingAsync(pager);
 
-            pager = ShouldDoPaging( pager, false );
+            pager = ShouldDoPaging(pager, false);
 
             pager.HowToPage = Pager.PagingType.PageFromOffset;
 
-            ethosResponseList = await HandlePagingAsync( pager );
+            ethosResponseList = await HandlePagingAsync(pager);
 
             return ethosResponseList;
         }
@@ -920,12 +1013,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<string>> GetAllPagesFromOffsetAsStringsAsync( string resourceName, string version = "", int offset = 0, int pageSize = 0 )
+        public async Task<IEnumerable<string>> GetAllPagesFromOffsetAsStringsAsync(string resourceName,
+            string version = "", int offset = 0, int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetAllPagesFromOffsetAsync( resourceName, version, offset, pageSize );
-            return ethosResponseConverter.ToPagedStringList( ethosResponseList );
+            var ethosResponseList = await GetAllPagesFromOffsetAsync(resourceName, version, offset, pageSize);
+            return ethosResponseConverter.ToPagedStringList(ethosResponseList);
         }
 
         /// <summary>
@@ -940,14 +1037,17 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<JArray>> GetAllPagesFromOffsetAsJArraysAsync( string resourceName, string version = "", int offset = 0, int pageSize = 0 )
+        public async Task<IEnumerable<JArray>> GetAllPagesFromOffsetAsJArraysAsync(string resourceName,
+            string version = "", int offset = 0, int pageSize = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetAllPagesFromOffsetAsync( resourceName, version, offset, pageSize );
-            return ethosResponseConverter.ToJArrayList( ethosResponseList );
+            var ethosResponseList = await GetAllPagesFromOffsetAsync(resourceName, version, offset, pageSize);
+            return ethosResponseConverter.ToJArrayList(ethosResponseList);
         }
-
 
         #endregion
 
@@ -962,36 +1062,41 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <param name="numPages">The number of pages of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetPagesAsync( string resourceName, string version = "", int pageSize = 0, int numPages = 0 )
+        public async Task<IEnumerable<EthosResponse>> GetPagesAsync(string resourceName, string version = "",
+            int pageSize = 0, int numPages = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 return ethosResponseList;
             }
-            if ( numPages < 1 )
+
+            if (numPages < 1)
             {
                 // Just get all pages if numPages is < 1.
-                return await GetAllPagesAsync( resourceName, version, pageSize );
+                return await GetAllPagesAsync(resourceName, version, pageSize);
             }
 
-            Pager pager = Pager.Build( p =>
+            Pager pager = Pager.Build(p =>
             {
-                p.ForResource( resourceName )
-                .ForVersion( version )
-                .WithPageSize( pageSize )
-                .ForNumPages( numPages );
-            } );
+                p.ForResource(resourceName)
+                    .ForVersion(version)
+                    .WithPageSize(pageSize)
+                    .ForNumPages(numPages);
+            });
 
-            pager = await PrepareForPagingAsync( pager );
+            pager = await PrepareForPagingAsync(pager);
 
-            pager = ShouldDoPaging( pager, false );
+            pager = ShouldDoPaging(pager, false);
 
             pager.HowToPage = Pager.PagingType.PageToNumPages;
 
-            ethosResponseList = await HandlePagingAsync( pager );
+            ethosResponseList = await HandlePagingAsync(pager);
 
             return ethosResponseList;
         }
@@ -1008,12 +1113,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <param name="numPages">The number of pages of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<string>> GetPagesAsStringsAsync( string resourceName, string version = "", int pageSize = 0, int numPages = 0 )
+        public async Task<IEnumerable<string>> GetPagesAsStringsAsync(string resourceName, string version = "",
+            int pageSize = 0, int numPages = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetPagesAsync( resourceName, version, pageSize, numPages );
-            return ethosResponseConverter.ToPagedStringList( ethosResponseList );
+            var ethosResponseList = await GetPagesAsync(resourceName, version, pageSize, numPages);
+            return ethosResponseConverter.ToPagedStringList(ethosResponseList);
         }
 
         #endregion
@@ -1028,14 +1137,17 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <param name="numPages">The number of pages of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<JArray>> GetPagesAsJArraysAsync( string resourceName, string version = "", int pageSize = 0, int numPages = 0 )
+        public async Task<IEnumerable<JArray>> GetPagesAsJArraysAsync(string resourceName, string version = "",
+            int pageSize = 0, int numPages = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetPagesAsync( resourceName, version, pageSize, numPages );
-            return ethosResponseConverter.ToJArrayList( ethosResponseList );
+            var ethosResponseList = await GetPagesAsync(resourceName, version, pageSize, numPages);
+            return ethosResponseConverter.ToJArrayList(ethosResponseList);
         }
-
 
         #endregion
 
@@ -1052,48 +1164,54 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="numPages">The number of pages of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetPagesFromOffsetAsync( string resourceName, string version = "", int pageSize = 0, int offset = 0, int numPages = 0 )
+        public async Task<IEnumerable<EthosResponse>> GetPagesFromOffsetAsync(string resourceName, string version = "",
+            int pageSize = 0, int offset = 0, int numPages = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 return ethosResponseList;
             }
 
-            if ( offset < 1 && numPages < 1 )
+            if (offset < 1 && numPages < 1)
             {
                 // Just get all pages if offset is < 1 and numPages < 1.
-                return await GetAllPagesAsync( resourceName, version, pageSize );
+                return await GetAllPagesAsync(resourceName, version, pageSize);
             }
-            if ( offset < 1 )
+
+            if (offset < 1)
             {
                 // If offset is < 1, get up to the num pages because numPages is >= 1.
-                return await GetPagesAsync( resourceName, version, pageSize, numPages );
+                return await GetPagesAsync(resourceName, version, pageSize, numPages);
             }
-            if ( numPages < 1 )
+
+            if (numPages < 1)
             {
                 // If numPages < 1, get from the offset because the offset is >= 1.
-                return await GetAllPagesFromOffsetAsync( resourceName, version, offset, pageSize );
+                return await GetAllPagesFromOffsetAsync(resourceName, version, offset, pageSize);
             }
 
-            Pager pager = Pager.Build( p =>
-                        {
-                            p.ForResource( resourceName )
-                            .ForVersion( version )
-                            .WithPageSize( pageSize )
-                            .ForNumPages( numPages )
-                            .FromOffSet( offset );
-                        } );
+            Pager pager = Pager.Build(p =>
+            {
+                p.ForResource(resourceName)
+                    .ForVersion(version)
+                    .WithPageSize(pageSize)
+                    .ForNumPages(numPages)
+                    .FromOffSet(offset);
+            });
 
-            pager = await PrepareForPagingAsync( pager );
+            pager = await PrepareForPagingAsync(pager);
 
-            pager = ShouldDoPaging( pager, false );
+            pager = ShouldDoPaging(pager, false);
 
             pager.HowToPage = Pager.PagingType.PageFromOffsetForNumPages;
 
-            ethosResponseList = await HandlePagingAsync( pager );
+            ethosResponseList = await HandlePagingAsync(pager);
 
             return ethosResponseList;
         }
@@ -1111,12 +1229,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="numPages">The number of pages of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<string>> GetPagesFromOffsetAsStringsAsync( string resourceName, string version = "", int pageSize = 0, int offset = 0, int numPages = 0 )
+        public async Task<IEnumerable<string>> GetPagesFromOffsetAsStringsAsync(string resourceName,
+            string version = "", int pageSize = 0, int offset = 0, int numPages = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetPagesFromOffsetAsync( resourceName, version, pageSize, offset, numPages );
-            return ethosResponseConverter.ToPagedStringList( ethosResponseList );
+            var ethosResponseList = await GetPagesFromOffsetAsync(resourceName, version, pageSize, offset, numPages);
+            return ethosResponseConverter.ToPagedStringList(ethosResponseList);
         }
 
         #endregion
@@ -1132,12 +1254,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="numPages">The number of pages of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<JArray>> GetPagesFromOffsetAsJArraysAsync( string resourceName, string version = "", int pageSize = 0, int offset = 0, int numPages = 0 )
+        public async Task<IEnumerable<JArray>> GetPagesFromOffsetAsJArraysAsync(string resourceName,
+            string version = "", int pageSize = 0, int offset = 0, int numPages = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetPagesFromOffsetAsync( resourceName, version, pageSize, offset, numPages );
-            return ethosResponseConverter.ToJArrayList( ethosResponseList );
+            var ethosResponseList = await GetPagesFromOffsetAsync(resourceName, version, pageSize, offset, numPages);
+            return ethosResponseConverter.ToJArrayList(ethosResponseList);
         }
 
         #endregion
@@ -1153,41 +1279,44 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <param name="numRows">The number of rows of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetRowsAsync( string resourceName, string version = "", int pageSize = 0, int numRows = 0 )
+        public async Task<IEnumerable<EthosResponse>> GetRowsAsync(string resourceName, string version = "",
+            int pageSize = 0, int numRows = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 return ethosResponseList;
             }
 
-            if ( numRows < 1 )
+            if (numRows < 1)
             {
                 // If numRows < 1, just get all pages.
-                return await GetAllPagesAsync( resourceName, version, pageSize );
+                return await GetAllPagesAsync(resourceName, version, pageSize);
             }
 
-            Pager pager = Pager.Build( p =>
-                        {
-                            p.ForResource( resourceName )
-                            .ForVersion( version )
-                            .WithPageSize( pageSize )
-                            .ForNumRows( numRows );
-                        } );
+            Pager pager = Pager.Build(p =>
+            {
+                p.ForResource(resourceName)
+                    .ForVersion(version)
+                    .WithPageSize(pageSize)
+                    .ForNumRows(numRows);
+            });
 
-            pager = await PrepareForPagingAsync( pager );
+            pager = await PrepareForPagingAsync(pager);
 
-            pager = ShouldDoPaging( pager, true );
+            pager = ShouldDoPaging(pager, true);
 
             pager.HowToPage = Pager.PagingType.PageToNumRows;
 
-            ethosResponseList = await HandlePagingAsync( pager );
+            ethosResponseList = await HandlePagingAsync(pager);
 
             return ethosResponseList;
         }
-
 
         #endregion
 
@@ -1202,12 +1331,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="numRows">The number of rows of the given resource to return.</param>
         /// <returns>A string list of data for the given resource from the given offset.</returns>
-        public async Task<IEnumerable<string>> GetRowsAsStringsAsync( string resourceName, string version = "", int numRows = 0 )
+        public async Task<IEnumerable<string>> GetRowsAsStringsAsync(string resourceName, string version = "",
+            int numRows = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetRowsAsync( resourceName, version, 0, numRows );
-            return ethosResponseConverter.ToStringList( ethosResponseList );
+            var ethosResponseList = await GetRowsAsync(resourceName, version, 0, numRows);
+            return ethosResponseConverter.ToStringList(ethosResponseList);
         }
 
         #endregion
@@ -1223,12 +1356,15 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="numRows">The number of rows of the given resource to return.</param>
         /// <returns>A JSON array of data for the given resource.</returns>
-        public async Task<JArray> GetRowsAsJArrayAsync( string resourceName, string version = "", int numRows = 0 )
+        public async Task<JArray> GetRowsAsJArrayAsync(string resourceName, string version = "", int numRows = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetRowsAsync( resourceName, version, 0, numRows );
-            return ethosResponseConverter.ToJArray( ethosResponseList );
+            var ethosResponseList = await GetRowsAsync(resourceName, version, 0, numRows);
+            return ethosResponseConverter.ToJArray(ethosResponseList);
         }
 
         #endregion
@@ -1246,38 +1382,42 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="numRows">The number of rows of the given resource to return.</param>
         /// <returns>A page of data for the given resource from the given offset with the given page size.</returns>
-        public async Task<IEnumerable<EthosResponse>> GetRowsFromOffsetAsync( string resourceName, string version = "", int pageSize = 0, int offset = 0, int numRows = 0 )
+        public async Task<IEnumerable<EthosResponse>> GetRowsFromOffsetAsync(string resourceName, string version = "",
+            int pageSize = 0, int offset = 0, int numRows = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 return ethosResponseList;
             }
 
-            if ( numRows < 1 )
+            if (numRows < 1)
             {
                 // If numRows < 1, just get all pages from the offset.
-                return await GetAllPagesFromOffsetAsync( resourceName, version, offset, pageSize );
+                return await GetAllPagesFromOffsetAsync(resourceName, version, offset, pageSize);
             }
 
-            Pager pager = Pager.Build( p =>
-                        {
-                            p.ForResource( resourceName )
-                            .ForVersion( version )
-                            .WithPageSize( pageSize )
-                            .FromOffSet( offset )
-                            .ForNumRows( numRows );
-                        } );
+            Pager pager = Pager.Build(p =>
+            {
+                p.ForResource(resourceName)
+                    .ForVersion(version)
+                    .WithPageSize(pageSize)
+                    .FromOffSet(offset)
+                    .ForNumRows(numRows);
+            });
 
-            pager = await PrepareForPagingAsync( pager );
+            pager = await PrepareForPagingAsync(pager);
 
-            pager = ShouldDoPaging( pager, true );
+            pager = ShouldDoPaging(pager, true);
 
             pager.HowToPage = Pager.PagingType.PageFromOffsetForNumRows;
 
-            ethosResponseList = await HandlePagingAsync( pager );
+            ethosResponseList = await HandlePagingAsync(pager);
 
             return ethosResponseList;
         }
@@ -1292,12 +1432,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="numRows">The number of rows of the given resource to return.</param>
         /// <returns>A string list of data for the given resource from the given offset.</returns>
-        public async Task<IEnumerable<string>> GetRowsFromOffsetAsStringsAsync( string resourceName, string version = "", int offset = 0, int numRows = 0 )
+        public async Task<IEnumerable<string>> GetRowsFromOffsetAsStringsAsync(string resourceName, string version = "",
+            int offset = 0, int numRows = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetRowsFromOffsetAsync( resourceName, version, 0, offset, numRows );
-            return ethosResponseConverter.ToStringList( ethosResponseList );
+            var ethosResponseList = await GetRowsFromOffsetAsync(resourceName, version, 0, offset, numRows);
+            return ethosResponseConverter.ToStringList(ethosResponseList);
         }
 
         /// <summary>
@@ -1310,12 +1454,16 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to get a page of data for the given resource.</param>
         /// <param name="numRows">The number of rows of the given resource to return.</param>
         /// <returns>A JSON array of data for the given resource from the given offset.</returns>
-        public async Task<JArray> GetRowsFromOffsetAsJArrayAsync( string resourceName, string version = "", int offset = 0, int numRows = 0 )
+        public async Task<JArray> GetRowsFromOffsetAsJArrayAsync(string resourceName, string version = "",
+            int offset = 0, int numRows = 0)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
-            var ethosResponseList = await GetRowsFromOffsetAsync( resourceName, version, 0, offset, numRows );
-            return ethosResponseConverter.ToJArray( ethosResponseList );
+            var ethosResponseList = await GetRowsFromOffsetAsync(resourceName, version, 0, offset, numRows);
+            return ethosResponseConverter.ToJArray(ethosResponseList);
         }
 
         #endregion
@@ -1331,18 +1479,21 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <returns>The data for a given resource in an <see cref="EthosResponse" /> according to the requested version of the resource.
         /// The <see cref="EthosResponse" /> contains the content body of the resource data as well as headers and
         /// the Http status code.</returns>
-        public async Task<EthosResponse> GetByIdAsync( string resourceName, string id, string version = "" )
+        public async Task<EthosResponse> GetByIdAsync(string resourceName, string id, string version = "")
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
-
-            if ( string.IsNullOrWhiteSpace( id ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
-                throw new ArgumentNullException( nameof( id ) );
+                throw new ArgumentNullException(nameof(resourceName));
             }
 
-            var headersMap = BuildHeadersMap( version );
-            string url = EthosIntegrationUrls.Api( Region, resourceName, id );
-            EthosResponse ethosResponse = await GetAsync( headersMap, url );
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            var headersMap = BuildHeadersMap(version);
+            string url = EthosIntegrationUrls.Api(Region, resourceName, id);
+            EthosResponse ethosResponse = await GetAsync(headersMap, url);
             return ethosResponse;
         }
 
@@ -1354,17 +1505,20 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <returns>The data for a given resource as a <see cref="string"/> according to the requested version of the resource.
         /// Only returns the content body of the <see cref="EthosResponse" />. Does not return header information or the Http status code.</returns>
-        public async Task<string> GetAsStringByIdAsync( string resourceName, string id, string version = "" )
+        public async Task<string> GetAsStringByIdAsync(string resourceName, string id, string version = "")
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
-
-            if ( string.IsNullOrWhiteSpace( id ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
-                throw new ArgumentNullException( nameof( id ) );
+                throw new ArgumentNullException(nameof(resourceName));
             }
 
-            EthosResponse ethosResponse = await GetByIdAsync( resourceName, id, version );
-            return ethosResponseConverter.ToContentString( ethosResponse );
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            EthosResponse ethosResponse = await GetByIdAsync(resourceName, id, version);
+            return ethosResponseConverter.ToContentString(ethosResponse);
         }
 
         /// <summary>
@@ -1375,16 +1529,20 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <returns>The data for a given resource as a <see cref="JObject"/> according to the requested version of the resource.
         /// Only returns the content body of the <see cref="EthosResponse" />. Does not return header information or the Http status code.</returns>
-        public async Task<JObject> GetAsJObjectByIdAsync( string resourceName, string id, string version = "" )
+        public async Task<JObject> GetAsJObjectByIdAsync(string resourceName, string id, string version = "")
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
-
-            if ( string.IsNullOrWhiteSpace( id ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
-                throw new ArgumentNullException( nameof( id ) );
+                throw new ArgumentNullException(nameof(resourceName));
             }
-            EthosResponse ethosResponse = await GetByIdAsync( resourceName, id, version );
-            return ethosResponseConverter.ToJObjectSingle( ethosResponse );
+
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            EthosResponse ethosResponse = await GetByIdAsync(resourceName, id, version);
+            return ethosResponseConverter.ToJObjectSingle(ethosResponse);
         }
 
         #endregion
@@ -1396,14 +1554,15 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// </summary>
         /// <param name="version">The version to use for the Accept and Content-Type headers, as supplied in the returned map.</param>
         /// <returns>a <see cref="Dictionary{TKey, TValue}"/> of header values including Accept and Content-Type (both set to the given version.</returns>
-        internal Dictionary<string, string> BuildHeadersMap( string version )
+        internal Dictionary<string, string> BuildHeadersMap(string version)
         {
             Dictionary<string, string> headers = new Dictionary<string, string>();
-            if ( string.IsNullOrWhiteSpace( version ) )
+            if (string.IsNullOrWhiteSpace(version))
             {
                 version = DEFAULT_VERSION;
             }
-            headers.Add( "Accept", version );
+
+            headers.Add("Accept", version);
             //headers.Add( "Content-Type", version );
             return headers;
         }
@@ -1417,49 +1576,49 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// </summary>
         /// <param name="pager">The Pager object used holding the required fields for paging.</param>
         /// <returns>The same pager object with the version and offset validated, and the page size and total count set.</returns>
-        protected async Task<Pager> PrepareForPagingAsync( Pager pager )
+        protected async Task<Pager> PrepareForPagingAsync(Pager pager)
         {
-            if ( pager == null )
+            if (pager == null)
             {
                 return pager;
             }
 
-            if ( string.IsNullOrWhiteSpace( pager.Version ) )
+            if (string.IsNullOrWhiteSpace(pager.Version))
             {
                 pager.Version = DEFAULT_VERSION;
             }
 
-            if ( pager.Offset < 1 )
+            if (pager.Offset < 1)
             {
                 pager.Offset = 0;
             }
 
             // First make a GET list call without filters to get the x-total-count.
-            EthosResponse ethosResponse = await GetAsync( pager.ResourceName, pager.Version );
+            EthosResponse ethosResponse = await GetAsync(pager.ResourceName, pager.Version);
 
             //If Ethos web api max page size is smaller than requested page size, then we need to make sure 
             //that we adjust the PageSize in pager and pages are returned with correct x-total-count which 
             //reflect what api allows in x-max-page-size for each page returned and no rows are omitted. 
             //(With Colleague API's, the max page size is either 100 or 200).
-            string apiMaxPageCount = GetHeaderValue( ethosResponse, HDR_X_MAX_PAGE_SIZE );
-            if ( int.TryParse( apiMaxPageCount, out int maxPageCount ) )
+            string apiMaxPageCount = GetHeaderValue(ethosResponse, HDR_X_MAX_PAGE_SIZE);
+            if (int.TryParse(apiMaxPageCount, out int maxPageCount))
             {
-                if ( maxPageCount < pager.PageSize )
+                if (maxPageCount < pager.PageSize)
                 {
                     pager.PageSize = maxPageCount;
                 }
             }
 
             // Set the pageSize.
-            if ( pager.PageSize <= DEFAULT_PAGE_SIZE )
+            if (pager.PageSize <= DEFAULT_PAGE_SIZE)
             {
                 // Set the pageSize from the response body length, if pageSize is <= DEFAULT_PAGE_SIZE.
-                int pageSize = await GetPageSizeAsync( pager.ResourceName, pager.Version, ethosResponse );
+                int pageSize = await GetPageSizeAsync(pager.ResourceName, pager.Version, ethosResponse);
                 pager.PageSize = pageSize;
             }
 
-            string totalCount = GetHeaderValue( ethosResponse, HDR_X_TOTAL_COUNT );
-            pager.TotalCount = Convert.ToInt32( totalCount );
+            string totalCount = GetHeaderValue(ethosResponse, HDR_X_TOTAL_COUNT);
+            pager.TotalCount = Convert.ToInt32(totalCount);
             pager.EthosResponse = ethosResponse;
             return pager;
         }
@@ -1474,10 +1633,10 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pager">The Pager object containing the total count or numRows, and page size to determine the need to page.</param>
         /// <param name="forNumRows">If true, then paging is by numRows. If false, then paging is by total count.</param>
         /// <returns>The given pager object with the shouldDoPaging flag set to true when paging is needed, or false when not.</returns>
-        protected Pager ShouldDoPaging( Pager pager, bool forNumRows )
+        protected Pager ShouldDoPaging(Pager pager, bool forNumRows)
         {
             int total = forNumRows ? pager.NumRows : pager.TotalCount;
-            bool shouldPage = NeedToPage( pager.PageSize, total );
+            bool shouldPage = NeedToPage(pager.PageSize, total);
             pager.ShouldDoPaging = shouldPage;
             return pager;
         }
@@ -1490,7 +1649,7 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pageSize">The page size for some resource.</param>
         /// <param name="totalCount">The total count of rows for some resource.</param>
         /// <returns>True if paging is needed, false otherwise.</returns>
-        private bool NeedToPage( int pageSize, int totalCount )
+        private bool NeedToPage(int pageSize, int totalCount)
         {
             return pageSize < totalCount;
         }
@@ -1502,17 +1661,18 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// </summary>
         /// <param name="pager">A pager previously prepared for paging (see <see cref="PrepareForPagingAsync(Pager)"/> and <see cref="ShouldDoPaging(Pager, bool)" />.</param>
         /// <returns>A list of <see cref="EthosResponse" />s where each <see cref="EthosResponse" /> in the list contains a page of data.</returns>
-        private async Task<List<EthosResponse>> HandlePagingAsync( Pager pager )
+        private async Task<List<EthosResponse>> HandlePagingAsync(Pager pager)
         {
             List<EthosResponse> ethosResponseList;
-            if ( pager.ShouldDoPaging )
+            if (pager.ShouldDoPaging)
             {
-                ethosResponseList = await GetDataFromPagingAsync( pager );
+                ethosResponseList = await GetDataFromPagingAsync(pager);
             }
             else
             {
-                ethosResponseList = GetDataFromInitialContent( pager );
+                ethosResponseList = GetDataFromInitialContent(pager);
             }
+
             return ethosResponseList;
         }
 
@@ -1523,30 +1683,37 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// </summary>
         /// <param name="pager">A previously prepared pager with the howToPage attribute set appropriately.</param>
         /// <returns>A list of <see cref="EthosResponse" />s where each <see cref="EthosResponse" /> in the list contains a page of data.</returns>
-        private async Task<List<EthosResponse>> GetDataFromPagingAsync( Pager pager )
+        private async Task<List<EthosResponse>> GetDataFromPagingAsync(Pager pager)
         {
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            switch ( pager.HowToPage )
+            switch (pager.HowToPage)
             {
                 case Pager.PagingType.PageAllPages:
-                    ethosResponseList = await DoPagingForAllAsync( pager.ResourceName, pager.Version, pager.TotalCount, pager.PageSize );
+                    ethosResponseList = await DoPagingForAllAsync(pager.ResourceName, pager.Version, pager.TotalCount,
+                        pager.PageSize);
                     break;
                 case Pager.PagingType.PageToNumPages:
-                    ethosResponseList = await DoPagingForNumPagesAsync( pager.ResourceName, pager.Version, pager.TotalCount, pager.PageSize, pager.NumPages );
+                    ethosResponseList = await DoPagingForNumPagesAsync(pager.ResourceName, pager.Version,
+                        pager.TotalCount, pager.PageSize, pager.NumPages);
                     break;
                 case Pager.PagingType.PageFromOffset:
-                    ethosResponseList = await DoPagingFromOffsetAsync( pager.ResourceName, pager.Version, null, pager.TotalCount, pager.PageSize, pager.Offset );
+                    ethosResponseList = await DoPagingFromOffsetAsync(pager.ResourceName, pager.Version, null,
+                        pager.TotalCount, pager.PageSize, pager.Offset);
                     break;
                 case Pager.PagingType.PageFromOffsetForNumPages:
-                    ethosResponseList = await DoPagingFromOffsetForNumPagesAsync( pager.ResourceName, pager.Version, pager.TotalCount, pager.PageSize, pager.NumPages, pager.Offset );
+                    ethosResponseList = await DoPagingFromOffsetForNumPagesAsync(pager.ResourceName, pager.Version,
+                        pager.TotalCount, pager.PageSize, pager.NumPages, pager.Offset);
                     break;
                 case Pager.PagingType.PageToNumRows:
-                    ethosResponseList = await DoPagingForNumRowsAsync( pager.ResourceName, pager.Version, pager.TotalCount, pager.PageSize, pager.NumRows );
+                    ethosResponseList = await DoPagingForNumRowsAsync(pager.ResourceName, pager.Version,
+                        pager.TotalCount, pager.PageSize, pager.NumRows);
                     break;
                 case Pager.PagingType.PageFromOffsetForNumRows:
-                    ethosResponseList = await DoPagingFromOffsetForNumRowsAsync( pager.ResourceName, pager.Version, pager.TotalCount, pager.PageSize, pager.Offset, pager.NumRows );
+                    ethosResponseList = await DoPagingFromOffsetForNumRowsAsync(pager.ResourceName, pager.Version,
+                        pager.TotalCount, pager.PageSize, pager.Offset, pager.NumRows);
                     break;
             }
+
             return ethosResponseList;
         }
 
@@ -1558,26 +1725,28 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="pager">A pager previously prepared for paging.</param>
         /// <returns>A list of <see cref="EthosResponse" />s containing a single page of data, which may be trimmed according to the
         /// howToPage PagingType specified in the pager.</returns>
-        private List<EthosResponse> GetDataFromInitialContent( Pager pager )
+        private List<EthosResponse> GetDataFromInitialContent(Pager pager)
         {
             List<EthosResponse> responseList = new List<EthosResponse>();
-            switch ( pager.HowToPage )
+            switch (pager.HowToPage)
             {
                 case Pager.PagingType.PageAllPages:
                 case Pager.PagingType.PageToNumPages:
-                    responseList.Add( pager.EthosResponse );
+                    responseList.Add(pager.EthosResponse);
                     break;
                 case Pager.PagingType.PageToNumRows:
-                    responseList.Add( ethosResponseConverter.TrimContentForNumRows( pager.EthosResponse, pager.NumRows ) );
+                    responseList.Add(ethosResponseConverter.TrimContentForNumRows(pager.EthosResponse, pager.NumRows));
                     break;
                 case Pager.PagingType.PageFromOffset:
                 case Pager.PagingType.PageFromOffsetForNumPages:
-                    responseList.Add( ethosResponseConverter.TrimContentFromOffset( pager.EthosResponse, pager.Offset ) );
+                    responseList.Add(ethosResponseConverter.TrimContentFromOffset(pager.EthosResponse, pager.Offset));
                     break;
                 case Pager.PagingType.PageFromOffsetForNumRows:
-                    responseList.Add( ethosResponseConverter.TrimContentFromOffsetForNumRows( pager.EthosResponse, pager.Offset, pager.NumRows ) );
+                    responseList.Add(ethosResponseConverter.TrimContentFromOffsetForNumRows(pager.EthosResponse,
+                        pager.Offset, pager.NumRows));
                     break;
             }
+
             return responseList;
         }
 
@@ -1590,9 +1759,10 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="totalCount">The total count of rows for the given resource.</param>
         /// <param name="pageSize">The number of rows to include in each page (EthosResponse) of the list returned.</param>
         /// <returns>A list of <see cref="EthosResponse" />s where each <see cref="EthosResponse" /> in the list represents a page.</returns>
-        private async Task<List<EthosResponse>> DoPagingForAllAsync( string resourceName, string version, int totalCount, int pageSize )
+        private async Task<List<EthosResponse>> DoPagingForAllAsync(string resourceName, string version, int totalCount,
+            int pageSize)
         {
-            return await DoPagingFromOffsetAsync( resourceName, version, null, totalCount, pageSize, 0 );
+            return await DoPagingFromOffsetAsync(resourceName, version, null, totalCount, pageSize, 0);
         }
 
         /// <summary>
@@ -1606,26 +1776,30 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to begin paging for the given resource.</param>
         /// <returns>A list of <see cref="EthosResponse" />s where each <see cref="EthosResponse" /> in the list represents a page,
         /// beginning from the given offset index.</returns>
-        protected async Task<List<EthosResponse>> DoPagingFromOffsetAsync( string resourceName, string version, string filter, int totalCount, int pageSize, int offset )
+        protected async Task<List<EthosResponse>> DoPagingFromOffsetAsync(string resourceName, string version,
+            string filter, int totalCount, int pageSize, int offset)
         {
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            Dictionary<string, string> headers = BuildHeadersMap( version );
-            decimal numPages = Math.Ceiling( ( Convert.ToDecimal( totalCount ) - Convert.ToDecimal( offset ) ) / Convert.ToDecimal( pageSize ) );
-            for ( int i = 0; i < numPages; i++ )
+            Dictionary<string, string> headers = BuildHeadersMap(version);
+            decimal numPages = Math.Ceiling((Convert.ToDecimal(totalCount) - Convert.ToDecimal(offset)) /
+                                            Convert.ToDecimal(pageSize));
+            for (int i = 0; i < numPages; i++)
             {
                 string url;
-                if ( string.IsNullOrWhiteSpace( filter ) )
+                if (string.IsNullOrWhiteSpace(filter))
                 {
-                    url = EthosIntegrationUrls.ApiPaging( Region, resourceName, offset, pageSize );
+                    url = EthosIntegrationUrls.ApiPaging(Region, resourceName, offset, pageSize);
                 }
                 else
                 {
-                    url = EthosIntegrationUrls.ApiFilterPaging( Region, resourceName, filter, offset, pageSize );
+                    url = EthosIntegrationUrls.ApiFilterPaging(Region, resourceName, filter, offset, pageSize);
                 }
-                EthosResponse response = await GetAsync( headers, url );
-                ethosResponseList.Add( response );
+
+                EthosResponse response = await GetAsync(headers, url);
+                ethosResponseList.Add(response);
                 offset += pageSize;
             }
+
             return ethosResponseList;
         }
 
@@ -1640,9 +1814,10 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="numPages">The number of pages to page for.</param>
         /// <returns>A list of <see cref="EthosResponse" />s where each <see cref="EthosResponse" /> in the list represents a page,
         /// up to some number of pages.</returns>
-        private async Task<List<EthosResponse>> DoPagingForNumPagesAsync( string resourceName, string version, int totalCount, int pageSize, int numPages )
+        private async Task<List<EthosResponse>> DoPagingForNumPagesAsync(string resourceName, string version,
+            int totalCount, int pageSize, int numPages)
         {
-            return await DoPagingFromOffsetForNumPagesAsync( resourceName, version, totalCount, pageSize, numPages, 0 );
+            return await DoPagingFromOffsetForNumPagesAsync(resourceName, version, totalCount, pageSize, numPages, 0);
         }
 
         /// <summary>
@@ -1657,21 +1832,24 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to begin paging for the given resource.</param>
         /// <returns>A list of <see cref="EthosResponse" />s where each <see cref="EthosResponse" /> in the list represents a page,
         /// from the given offset( inclusive) and up to some number of pages( exclusive).</returns>
-        private async Task<List<EthosResponse>> DoPagingFromOffsetForNumPagesAsync( string resourceName, string version, int totalCount, int pageSize, int numPages, int offset )
+        private async Task<List<EthosResponse>> DoPagingFromOffsetForNumPagesAsync(string resourceName, string version,
+            int totalCount, int pageSize, int numPages, int offset)
         {
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            Dictionary<string, string> headers = BuildHeadersMap( version );
-            for ( int i = 0; i < numPages; i++ )
+            Dictionary<string, string> headers = BuildHeadersMap(version);
+            for (int i = 0; i < numPages; i++)
             {
-                if ( offset >= totalCount )
+                if (offset >= totalCount)
                 {
                     break;
                 }
-                string url = EthosIntegrationUrls.ApiPaging( Region, resourceName, offset, pageSize );
-                EthosResponse response = await GetAsync( headers, url );
-                ethosResponseList.Add( response );
+
+                string url = EthosIntegrationUrls.ApiPaging(Region, resourceName, offset, pageSize);
+                EthosResponse response = await GetAsync(headers, url);
+                ethosResponseList.Add(response);
                 offset += pageSize;
             }
+
             return ethosResponseList;
         }
 
@@ -1686,8 +1864,9 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="numRows"></param>
         /// <returns>A list of <see cref="EthosResponse" />s where each <see cref="EthosResponse" /> in the list represents a page,
         /// up to the number of rows specified or the total count of the resource( whichever is less).</returns>
-        private async Task<List<EthosResponse>> DoPagingForNumRowsAsync( string resourceName, string version, int totalCount, int pageSize, int numRows ) =>
-            await DoPagingFromOffsetForNumRowsAsync( resourceName, version, totalCount, pageSize, 0, numRows );
+        private async Task<List<EthosResponse>> DoPagingForNumRowsAsync(string resourceName, string version,
+            int totalCount, int pageSize, int numRows) =>
+            await DoPagingFromOffsetForNumRowsAsync(resourceName, version, totalCount, pageSize, 0, numRows);
 
         /// <summary>
         /// <para><b>Intended to be used internally within the SDK.</b></para>
@@ -1700,32 +1879,37 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="offset">The 0 based index from which to begin paging for the given resource.</param>
         /// <param name="numRows">The overall number of rows to page for.</param>
         /// <returns>Returns collection of EthosResponses.</returns>
-        private async Task<List<EthosResponse>> DoPagingFromOffsetForNumRowsAsync( string resourceName, string version, int totalCount, int pageSize, int offset, int numRows )
+        private async Task<List<EthosResponse>> DoPagingFromOffsetForNumRowsAsync(string resourceName, string version,
+            int totalCount, int pageSize, int offset, int numRows)
         {
             List<EthosResponse> ethosResponseList = new List<EthosResponse>();
-            Dictionary<string, string> headers = BuildHeadersMap( version );
-            if ( numRows > totalCount )
+            Dictionary<string, string> headers = BuildHeadersMap(version);
+            if (numRows > totalCount)
             {
                 numRows = totalCount; // Ensure the numRows requested is not more than the totalCount.
             }
-            decimal numPages = Math.Ceiling( Convert.ToDecimal( numRows ) / Convert.ToDecimal( pageSize ) );
+
+            decimal numPages = Math.Ceiling(Convert.ToDecimal(numRows) / Convert.ToDecimal(pageSize));
             int totalNum = numRows + offset;
-            for ( int i = 0; i < numPages; i++ )
+            for (int i = 0; i < numPages; i++)
             {
-                if ( offset >= totalCount )
+                if (offset >= totalCount)
                 {
                     break;
                 }
+
                 int rowsRemaining = totalNum - offset;
-                if ( rowsRemaining < pageSize )
+                if (rowsRemaining < pageSize)
                 {
                     pageSize = rowsRemaining;
                 }
-                string url = EthosIntegrationUrls.ApiPaging( Region, resourceName, offset, pageSize );
-                EthosResponse response = await GetAsync( headers, url );
-                ethosResponseList.Add( response );
+
+                string url = EthosIntegrationUrls.ApiPaging(Region, resourceName, offset, pageSize);
+                EthosResponse response = await GetAsync(headers, url);
+                ethosResponseList.Add(response);
                 offset += pageSize;
             }
+
             return ethosResponseList;
         }
 
@@ -1736,9 +1920,9 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="ethosResponse">The <see cref="EthosResponse" /> to get a header value from.</param>
         /// <param name="primaryHeaderName">A header name following Ethos standards (such as "x-media-type").</param>
         /// <returns>The value of the given header. Returns null if the given ethosResponse is null or the header is not found.</returns>
-        protected static string GetHeaderValue( EthosResponse ethosResponse, string primaryHeaderName )
+        protected static string GetHeaderValue(EthosResponse ethosResponse, string primaryHeaderName)
         {
-            return ethosResponse?.GetHeader( primaryHeaderName );
+            return ethosResponse?.GetHeader(primaryHeaderName);
         }
 
         /// <summary>
@@ -1750,35 +1934,41 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="ethosResponse">An <see cref="EthosResponse" /> from which to calculate the page size using it's content body length, or null.</param>
         /// <returns>The page size of the given resource.</returns>
-        public async Task<int> GetPageSizeAsync( string resourceName, string version = "", EthosResponse ethosResponse = null )
+        public async Task<int> GetPageSizeAsync(string resourceName, string version = "",
+            EthosResponse ethosResponse = null)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName ) ) { throw new ArgumentNullException( nameof( resourceName ) ); }
+            if (string.IsNullOrWhiteSpace(resourceName))
+            {
+                throw new ArgumentNullException(nameof(resourceName));
+            }
 
             int pageSize = 0;
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 return pageSize;
             }
 
-            if ( string.IsNullOrWhiteSpace( version ) )
+            if (string.IsNullOrWhiteSpace(version))
             {
                 version = DEFAULT_VERSION;
             }
 
-            if ( ethosResponse == null )
+            if (ethosResponse == null)
             {
-                ethosResponse = await GetAsync( resourceName, version );
+                ethosResponse = await GetAsync(resourceName, version);
             }
+
             // Set the pageSize from the response body length, if pageSize is <= DEFAULT_PAGE_SIZE.
-            if ( !string.IsNullOrWhiteSpace( ethosResponse.Content ) )
+            if (!string.IsNullOrWhiteSpace(ethosResponse.Content))
             {
-                JArray jArray = JsonConvert.DeserializeObject( ethosResponse.Content ) as JArray;
+                JArray jArray = JsonConvert.DeserializeObject(ethosResponse.Content) as JArray;
                 pageSize = jArray.Count;
             }
             else
             {
-                pageSize = await GetMaxPageSizeAsync( resourceName, version, ethosResponse );
+                pageSize = await GetMaxPageSizeAsync(resourceName, version, ethosResponse);
             }
+
             return pageSize;
         }
 
@@ -1791,30 +1981,35 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="ethosResponse">An <see cref="EthosResponse" /> from which to calculate the page size using it's content body length, or null.</param>
         /// <returns>The max page size for the resource as found using the x-max-page-size header.</returns>
-        public async Task<int> GetMaxPageSizeAsync( string resourceName, string version = "", EthosResponse ethosResponse = null )
+        public async Task<int> GetMaxPageSizeAsync(string resourceName, string version = "",
+            EthosResponse ethosResponse = null)
         {
             int maxPageSize = 0;
-            if ( string.IsNullOrWhiteSpace( resourceName ) )
+            if (string.IsNullOrWhiteSpace(resourceName))
             {
                 return maxPageSize;
             }
-            if ( string.IsNullOrWhiteSpace( version ) )
+
+            if (string.IsNullOrWhiteSpace(version))
             {
                 version = DEFAULT_VERSION;
             }
-            if ( ethosResponse == null )
+
+            if (ethosResponse == null)
             {
-                ethosResponse = await GetAsync( resourceName, version );
+                ethosResponse = await GetAsync(resourceName, version);
             }
-            string maxPageSizeStr = GetHeaderValue( ethosResponse, HDR_X_MAX_PAGE_SIZE );
-            if ( !string.IsNullOrWhiteSpace( maxPageSizeStr ) )
+
+            string maxPageSizeStr = GetHeaderValue(ethosResponse, HDR_X_MAX_PAGE_SIZE);
+            if (!string.IsNullOrWhiteSpace(maxPageSizeStr))
             {
-                maxPageSize = Convert.ToInt32( maxPageSizeStr );
+                maxPageSize = Convert.ToInt32(maxPageSizeStr);
             }
             else
             {
                 maxPageSize = DEFAULT_MAX_PAGE_SIZE;
             }
+
             return maxPageSize;
         }
 
@@ -1827,26 +2022,31 @@ namespace Ellucian.Ethos.Integration.Client.Proxy
         /// <param name="version">The desired resource version to use, as provided in the HTTP Accept Header of the request.</param>
         /// <param name="ethosResponse">An <see cref="EthosResponse" /> from which to get the total count, or null.</param>
         /// <returns>The total count for the given resource, or 0 if the resourceName is null or empty.</returns>
-        public async Task<int> GetTotalCountAsync( string resourceName, string version = "", EthosResponse ethosResponse = null )
+        public async Task<int> GetTotalCountAsync(string resourceName, string version = "",
+            EthosResponse ethosResponse = null)
         {
-            if ( string.IsNullOrWhiteSpace( resourceName.Trim() ) )
+            if (string.IsNullOrWhiteSpace(resourceName.Trim()))
             {
                 return 0;
             }
-            if ( string.IsNullOrWhiteSpace( version.Trim() ) )
+
+            if (string.IsNullOrWhiteSpace(version.Trim()))
             {
                 version = DEFAULT_VERSION;
             }
-            if ( ethosResponse == null )
-            {
-                ethosResponse = await GetAsync( resourceName, version );
-            }
-            string totalCountStr = GetHeaderValue( ethosResponse, HDR_X_TOTAL_COUNT );
 
-            if ( int.TryParse( totalCountStr, out int count ) )
+            if (ethosResponse == null)
+            {
+                ethosResponse = await GetAsync(resourceName, version);
+            }
+
+            string totalCountStr = GetHeaderValue(ethosResponse, HDR_X_TOTAL_COUNT);
+
+            if (int.TryParse(totalCountStr, out int count))
             {
                 return count;
             }
+
             return 0;
         }
 
